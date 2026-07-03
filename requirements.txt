@@ -1,0 +1,7 @@
+spacy
+pydub
+google-genai
+deep-translator
+PyMuPDF
+python-dotenv
+streamlit
