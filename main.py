@@ -1,17 +1,28 @@
-from src.core.pdf_processor import extrair_texto_pdf
-from src.pipeline import dry_run
-from src.services.tts_service import processar_pipeline
+"""
+Ponto de entrada. Uso:
+    python main.py data/inputs/brasCubasteste.pdf            -> dry run (não gasta chamada de API)
+    python main.py data/inputs/brasCubasteste.pdf --gerar     -> gera o MP3 de fato
+"""
+import argparse
 
-caminho_do_meu_pdf = "data/inputs/capitulo_teste.pdf" # Coloque um PDF nessa pasta
+from pipeline import processar_pipeline
+from src.services.tts_service import dry_run, gerar_audiobook
 
-# 1. Extrair
-texto = extrair_texto_pdf(caminho_do_meu_pdf)
 
-# 2. Processar
-blocos, catalogo = processar_pipeline(texto, modo_dialogo="auto")
+def main():
+    parser = argparse.ArgumentParser(description="Gerador de audiobooks com múltiplas vozes (TCC)")
+    parser.add_argument("pdf", help="Caminho do PDF de entrada, ex.: data/inputs/capitulo.pdf")
+    parser.add_argument("--gerar", action="store_true", help="Gera o MP3 (gasta chamadas ao Gemini TTS)")
+    args = parser.parse_args()
 
-# 3. Testar
-dry_run(blocos, catalogo)
+    blocos, catalogo = processar_pipeline(args.pdf)
 
-# 4. Gerar (Descomente quando quiser gastar tokens)
-# gerar_audiobook(blocos, catalogo, "data/outputs/audiobook.mp3")
+    if args.gerar:
+        arquivo = gerar_audiobook(blocos, catalogo)
+        print(f"\nAudiobook gerado em: {arquivo}")
+    else:
+        dry_run(blocos, catalogo)
+
+
+if __name__ == "__main__":
+    main()

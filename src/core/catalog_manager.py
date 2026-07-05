@@ -1,51 +1,47 @@
-from src.config import BANCO_VOZES_GEMINI
+"""
+Responsabilidade única: manter o catálogo {personagem -> voz/gênero} e o
+"estado de saliência" (quem foi mencionado por último).
+
+Antes (TG1): gênero vinha de inferir_genero(nome), que adivinhava pelo
+sufixo da palavra - um dicionário de regras disfarçado.
+Agora: quem decide o gênero é sempre o nlp_analyzer (morfologia real do
+spaCy). Este arquivo só registra e distribui vozes.
+"""
+from config import BANCO_VOZES_GEMINI
 
 
-def inferir_genero_simples(nome: str) -> str:
-    n = nome.lower()
-    if n.endswith(("a", "ã", "inha", "ela", "esa", "isa")):
-        return "feminino"
-    if n.endswith(("o", "ão", "im", "om", "or", "us")):
-        return "masculino"
-    return "feminino"
+def criar_catalogo() -> dict:
+    return {"Narrador": {"voz": BANCO_VOZES_GEMINI["narrador"], "genero": "narrador"}}
 
 
-def registrar_personagem(nome: str, genero_inferido: str, catalogo: dict) -> str:
-    if nome == "Desconhecido":
-        letra = (
-            "F"
-            if genero_inferido == "feminino"
-            else "M"
-            if genero_inferido == "masculino"
-            else "N"
-        )
-        candidatos = sorted(
-            [k for k in catalogo if k.startswith(f"Personagem_{letra}")], reverse=True
-        )
-        if candidatos:
-            return candidatos[0]
-
-        n = sum(1 for k in catalogo if k.startswith(f"Personagem_{letra}"))
-        nome_anonimo = f"Personagem_{letra}_{n + 1}"
-        gen_cat = "neutro" if genero_inferido == "neutro" else genero_inferido
-        vozes = BANCO_VOZES_GEMINI[gen_cat]
-        idx = sum(1 for v in catalogo.values() if v.get("genero") == gen_cat)
-        catalogo[nome_anonimo] = {"voz": vozes[idx % len(vozes)], "genero": gen_cat}
-        return nome_anonimo
-
-    if nome in catalogo:
-        return nome
-
-    genero = inferir_genero_simples(nome)
-    vozes = BANCO_VOZES_GEMINI[genero]
-    n = sum(1 for v in catalogo.values() if v.get("genero") == genero)
-    catalogo[nome] = {"voz": vozes[n % len(vozes)], "genero": genero}
-    return nome
+def criar_estado_saliencia() -> dict:
+    return {"ultimo_fem": None, "ultimo_masc": None, "ultima_entidade": None}
 
 
-def atualizar_coref(nome: str, catalogo: dict, estado_coref: dict):
-    gen = catalogo.get(nome, {}).get("genero", "")
-    if gen == "feminino":
-        estado_coref["ultimo_fem"] = nome
-    elif gen == "masculino":
-        estado_coref["ultimo_masc"] = nome
+def registrar_personagem(chave: str, genero: str, catalogo: dict, traco: str = "") -> str:
+    """Registra um personagem (nome próprio ou descrição, ex. 'Senhora')
+    e atribui a próxima voz livre daquele gênero. Se já existir, reaproveita
+    (mas atualiza o traço emocional mais recente, se houver um novo)."""
+    if chave in catalogo:
+        if traco:
+            catalogo[chave]["traco"] = traco
+        return chave
+
+    genero_cat = genero if genero in ("feminino", "masculino") else "neutro"
+    vozes = BANCO_VOZES_GEMINI[genero_cat]
+    n = sum(1 for v in catalogo.values() if v.get("genero") == genero_cat)
+    catalogo[chave] = {"voz": vozes[n % len(vozes)], "genero": genero_cat, "traco": traco}
+    return chave
+
+
+def atualizar_saliencia(entidades: list, estado: dict, catalogo: dict):
+    """Chamado a cada trecho de narração. Registra as entidades citadas e
+    atualiza 'quem foi mencionado por último' - usado depois para resolver
+    pronomes e sujeitos elípticos nas falas seguintes."""
+    for entidade in entidades:
+        registrar_personagem(entidade["chave"], entidade["genero"], catalogo, entidade.get("traco", ""))
+        if entidade["genero"] == "feminino":
+            estado["ultimo_fem"] = entidade["chave"]
+        elif entidade["genero"] == "masculino":
+            estado["ultimo_masc"] = entidade["chave"]
+        estado["ultima_entidade"] = entidade["chave"]

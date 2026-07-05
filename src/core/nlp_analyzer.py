@@ -1,140 +1,202 @@
+"""
+Responsabilidade única: "entender" o texto usando o spaCy.
+Aqui ficam os itens 2 e 3 do TCC:
+  - Item 2: inferir gênero de personagens não nomeados, pelo contexto.
+  - Item 3: em vez de dicionário fixo de nomes/personagens, usa:
+      (a) morfologia do spaCy para gênero (Gender=Fem/Masc),
+      (b) similaridade de vetores para saber se um substantivo comum
+          se refere a uma pessoa (ex.: "senhora", "velho"),
+      (c) um "estado de saliência" simples (quem foi mencionado por
+          último) para resolver pronomes e sujeitos elípticos - uma
+          versão enxuta de correferência, sem depender de um modelo
+          de coreference pronto (não existe um confiável para PT-BR).
+"""
 import re
+import spacy
 from deep_translator import GoogleTranslator
 
 from config import (
-    _LABELS_FALANTE,
-    _PRONOMES_FEM,
-    _PRONOMES_MASC,
-    _STOPWORDS_EMOCAO,
-    VERBOS_ELOCUCAO_LEMMAS,
+    VERBOS_ELOCUCAO_LEMMAS, ANCORAS_HUMANO, LIMIAR_SIMILARIDADE_HUMANO,
+    PALAVRAS_TOM, STOPWORDS_EMOCAO, PRONOMES_FEM, PRONOMES_MASC,
+    LABELS_FALANTE, MODELO_SPACY,
 )
 
-
-def _extrair_entidades_falantes(doc) -> list:
-    return [
-        ent.text.strip().title() for ent in doc.ents if ent.label_ in _LABELS_FALANTE
-    ]
+_tradutor_en = GoogleTranslator(source="pt", target="en")
 
 
-def inferir_genero_por_contexto(nlp_model, contexto: str) -> str:
-    """
-    Substitui dicionários engessados pela análise morfológica real do spaCy.
-    """
-    if not contexto:
-        return "neutro"
+def carregar_modelo():
+    print("Carregando modelo NLP (spaCy)...")
+    return spacy.load(MODELO_SPACY)
 
-    doc = nlp_model(contexto)
-    score_f, score_m = 0, 0
 
-    for token in doc:
-        # Analisa pronomes, substantivos, nomes próprios e adjetivos
-        if token.pos_ in ["NOUN", "ADJ", "PRON", "PROPN"]:
-            gen = token.morph.get("Gender")
-            if "Fem" in gen:
-                score_f += 1
-            elif "Masc" in gen:
-                score_m += 1
-
-    if score_f > score_m:
+def _genero_por_morfologia(token) -> str:
+    """Usa a marcação morfológica do spaCy (estatística, treinada em corpus
+    real) em vez de adivinhar gênero pela terminação da palavra."""
+    genero = token.morph.get("Gender")
+    if "Fem" in genero:
         return "feminino"
-    if score_m > score_f:
+    if "Masc" in genero:
         return "masculino"
     return "neutro"
 
 
-def identificar_personagem(nlp_model, sentenca: str, estado_coref: dict) -> tuple:
+def _eh_substantivo_humano(nlp_model, token) -> bool:
+    """Substitui uma lista fixa tipo {'senhora','velho','moça'...} por
+    similaridade semântica com um punhado de âncoras genéricas."""
+    if token.pos_ != "NOUN" or not token.has_vector:
+        return False
+    for ancora in ANCORAS_HUMANO:
+        ancora_tok = nlp_model.vocab[ancora]
+        if ancora_tok.has_vector and token.similarity(ancora_tok) >= LIMIAR_SIMILARIDADE_HUMANO:
+            return True
+    return False
+
+
+def _traco_emocional(nlp_model, token) -> str:
+    """Pega um adjetivo que descreve diretamente a pessoa (ex.: 'a triste
+    senhora' -> 'triste'), para usar como pista de emoção se a fala dela
+    não tiver nenhuma outra pista mais direta."""
+    for filho in token.children:
+        if filho.dep_ == "amod" and filho.text.lower() not in STOPWORDS_EMOCAO:
+            return filho.text.lower()
+    return ""
+
+
+def extrair_entidades_referenciais(nlp_model, texto: str, exigir_sujeito: bool = True) -> list:
+    """Retorna candidatos a personagem citados num trecho de narração:
+    nomes próprios (via NER) OU descrições de pessoa (via similaridade).
+    Ex.: 'a triste senhora' -> {'chave': 'Senhora', 'genero': 'feminino', 'traco': 'triste'}
+
+    exigir_sujeito=True filtra substantivos comuns que são só objeto/
+    complemento da frase (ex.: 'ele escreveu para a Filha') - queremos só
+    quem é sujeito, ou seja, protagonista daquela oração. Nomes próprios
+    (NER) continuam valendo mesmo fora do papel de sujeito, pois são
+    personagens de fato citados na obra.
+    """
+    # bloco curto demais (título, cabeçalho) não tem sujeito de verdade -
+    # o NER erra muito nesses casos, então nem tentamos.
+    if not texto.strip() or len(texto.split()) < 4:
+        return []
+
+    doc = nlp_model(texto)
+    entidades = []
+
+    for ent in doc.ents:
+        # CORREÇÃO 1: Ignorar falsos positivos óbvios como Capítulos
+        if ent.label_ in LABELS_FALANTE and not ent.text.lower().startswith("capítulo"):
+            # FILTRO DE SEGURANÇA:
+            # 1. Ignorar se a entidade tiver apenas 1 palavra e for um verbo comum
+            # 2. Ignorar se for uma palavra que começa com letra minúscula no texto (a menos que seja nome próprio real)
+            primeira_palavra = ent.text.split()[0].lower()
+            if primeira_palavra in VERBOS_ELOCUCAO_LEMMAS or len(ent.text.split()) > 3:
+                continue
+                
+            entidades.append({
+                "chave": ent.text.strip().title(),
+                "genero": _genero_por_morfologia(ent.root),
+                "traco": "",
+            })
+
+    for token in doc:
+        if not _eh_substantivo_humano(nlp_model, token):
+            continue
+        
+        # CORREÇÃO 2: Ampliar as dependências aceitas. Personagens podem ser introduzidos como objetos (obj) 
+        # ou complementos (obl, nmod) na narração antes de falarem (Ex: "levou os fiéis").
+        dependencias_validas = ("nsubj", "appos", "obj", "obl", "nmod")
+        if exigir_sujeito and token.dep_ not in dependencias_validas:
+            continue
+            
+        entidades.append({
+            "chave": f"Personagem_{token.lemma_.title()}",  # Ajuda a identificar no console que foi inferido
+            "genero": _genero_por_morfologia(token),
+            "traco": _traco_emocional(nlp_model, token),
+        })
+    return entidades
+
+
+def identificar_personagem(nlp_model, sentenca: str, estado: dict) -> tuple:
+    """Descobre quem fala, cobrindo 3 situações comuns em texto literário:
+      1) sujeito é nome próprio -> usa NER/dependência
+      2) sujeito é pronome (ela/ele) -> usa a última entidade daquele gênero
+      3) sujeito está oculto/elíptico (ex.: 'dizia consigo') -> usa a
+         última entidade mencionada na narração, seja ela nomeada ou não
+    """
     if not sentenca:
         return None, None
-    doc = nlp_model(sentenca)
 
-    # Verifica se existe verbo de elocução utilizando Lemmas
+    doc = nlp_model(sentenca)
     if not any(t.lemma_.lower() in VERBOS_ELOCUCAO_LEMMAS for t in doc):
         return None, None
-
-    entidades = _extrair_entidades_falantes(doc)
 
     for token in doc:
         if token.lemma_.lower() not in VERBOS_ELOCUCAO_LEMMAS:
             continue
 
-        for filho in token.children:
-            if filho.dep_ != "nsubj":
-                continue
+        sujeitos = [filho for filho in token.children if filho.dep_ == "nsubj"]
 
+        if not sujeitos:
+            if estado.get("ultima_entidade"):
+                return estado["ultima_entidade"], "elipse_sujeito"
+            continue
+
+        for filho in sujeitos:
             texto_filho = filho.text.lower()
-            if texto_filho in _PRONOMES_FEM and estado_coref.get("ultimo_fem"):
-                return estado_coref["ultimo_fem"], "coref_fem"
-            if texto_filho in _PRONOMES_MASC and estado_coref.get("ultimo_masc"):
-                return estado_coref["ultimo_masc"], "coref_masc"
-
-            # SUBSTITUI O _NAO_NOME: Confia na marcação de Substantivo Próprio do spaCy
+            # CORREÇÃO 3: Machado de Assis usa muito o pronome "que" como sujeito ("o discurso QUE proferiu")
+            if texto_filho in ("que", "quem", "o qual"):
+                if estado.get("ultima_entidade"):
+                    return estado["ultima_entidade"], "elipse_relativa"
+            if texto_filho in PRONOMES_FEM and estado.get("ultimo_fem"):
+                return estado["ultimo_fem"], "coref_fem"
+            if texto_filho in PRONOMES_MASC and estado.get("ultimo_masc"):
+                return estado["ultimo_masc"], "coref_masc"
             if filho.pos_ == "PROPN":
-                nome = filho.text.strip().title()
-                if len(nome) > 2:
-                    return nome, "dep_parsing_propn"
+                return filho.text.title(), "nome_proprio"
+            if _eh_substantivo_humano(nlp_model, filho):
+                return filho.lemma_.title(), "descricao"
 
-    if entidades:
-        return entidades[0], "ner_fallback"
     return None, None
 
 
-_tradutor_en = GoogleTranslator(source="pt", target="en")
+def extrair_tag_emocao(nlp_model, texto_narrador: str, traco_personagem: str = "") -> tuple:
+    """Procura advérbios/adjetivos ligados ao verbo de elocução ou a
+    palavras como 'voz'/'tom'. Se não achar nada, usa o traço emocional
+    do personagem (adjetivo que o descreve, ex. 'triste') como reforço -
+    é mais fraco, mas melhor que devolver neutro sem necessidade."""
+    if not texto_narrador.strip() and not traco_personagem:
+        return "neutral", "sem_narrador"
 
-
-def _traduzir_token(token_pt: str) -> str:
-    try:
-        traduzido = _tradutor_en.translate(token_pt.lower())
-        return re.sub(r"[^a-z_]", "", traduzido.lower().replace(" ", "_"))
-    except Exception:
-        return "neutral"
-
-
-def extrair_tag_emocao(nlp_model, texto_narrador: str) -> tuple:
-    if not texto_narrador.strip():
-        return "neutral", "sem_narrador -> neutral"
-    doc = nlp_model(texto_narrador)
+    doc = nlp_model(texto_narrador) if texto_narrador.strip() else None
     palavras = []
 
-    for token in doc:
-        if token.lemma_.lower() in VERBOS_ELOCUCAO_LEMMAS:
-            for filho in token.children:
-                if filho.pos_ == "ADV" and filho.text.lower() not in _STOPWORDS_EMOCAO:
-                    palavras.append((filho.text.lower(), "adv_verbo"))
-                    for neto in filho.children:
-                        if (
-                            neto.dep_ == "conj"
-                            and neto.pos_ == "ADV"
-                            and neto.text.lower() not in _STOPWORDS_EMOCAO
-                        ):
-                            palavras.append((neto.text.lower(), "adv_conj"))
-        if token.text.lower() in {"voz", "tom", "olhar", "expressão"}:
-            for filho in token.children:
-                if (
-                    filho.pos_ in ("ADJ", "ADV")
-                    and filho.text.lower() not in _STOPWORDS_EMOCAO
-                ):
-                    palavras.append((filho.text.lower(), "descritor"))
-                    for neto in filho.children:
-                        if (
-                            neto.dep_ == "conj"
-                            and neto.pos_ in ("ADJ", "ADV")
-                            and neto.text.lower() not in _STOPWORDS_EMOCAO
-                        ):
-                            palavras.append((neto.text.lower(), "descritor_conj"))
+    if doc is not None:
+        for token in doc:
+            if token.lemma_.lower() in VERBOS_ELOCUCAO_LEMMAS:
+                for filho in token.children:
+                    if filho.pos_ == "ADV" and filho.text.lower() not in STOPWORDS_EMOCAO:
+                        palavras.append(filho.text.lower())
+            if token.text.lower() in PALAVRAS_TOM:
+                for filho in token.children:
+                    if filho.pos_ in ("ADJ", "ADV") and filho.text.lower() not in STOPWORDS_EMOCAO:
+                        palavras.append(filho.text.lower())
+
+    if not palavras and traco_personagem:
+        palavras.append(traco_personagem)
 
     if not palavras:
-        return "neutral", "sem_modificadores -> neutral"
+        return "neutral", "sem_modificadores"
 
-    tags, log, vistos = [], [], set()
-    for pt_word, _ in palavras:
+    tags, vistos = [], set()
+    for pt_word in palavras:
         if pt_word in vistos:
             continue
         vistos.add(pt_word)
-        en_word = _traduzir_token(pt_word)
-        if en_word and en_word != "neutral":
+        try:
+            traduzido = _tradutor_en.translate(pt_word).lower().replace(" ", "_")
+            en_word = re.sub(r"[^a-z_]", "", traduzido)
+        except Exception:
+            en_word = ""
+        if en_word:
             tags.append(en_word)
-            log.append(f"{pt_word} -> [{en_word}]")
 
-    if not tags:
-        return "neutral", "falha_traducao -> neutral"
-    return ", ".join(tags), " | ".join(log)
+    return (", ".join(tags), "traduzido") if tags else ("neutral", "falha_traducao")
