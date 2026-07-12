@@ -42,8 +42,11 @@ def _genero_por_morfologia(token) -> str:
 
 def _eh_substantivo_humano(nlp_model, token) -> bool:
     """Substitui uma lista fixa tipo {'senhora','velho','moça'...} por
-    similaridade semântica com um punhado de âncoras genéricas."""
-    if token.pos_ != "NOUN" or not token.has_vector:
+    similaridade semântica com um punhado de âncoras genéricas.
+    Aceita NOUN e também ADJ, porque em PT-BR é comum usar um adjetivo
+    substantivado para se referir a uma pessoa (ex.: 'os fiéis', 'o velho',
+    'a idosa') sem um substantivo explícito ao lado."""
+    if token.pos_ not in ("NOUN", "ADJ") or not token.has_vector:
         return False
     for ancora in ANCORAS_HUMANO:
         ancora_tok = nlp_model.vocab[ancora]
@@ -82,20 +85,20 @@ def extrair_entidades_referenciais(nlp_model, texto: str, exigir_sujeito: bool =
     entidades = []
 
     for ent in doc.ents:
-        # CORREÇÃO 1: Ignorar falsos positivos óbvios como Capítulos
-        if ent.label_ in LABELS_FALANTE and not ent.text.lower().startswith("capítulo"):
-            # FILTRO DE SEGURANÇA:
-            # 1. Ignorar se a entidade tiver apenas 1 palavra e for um verbo comum
-            # 2. Ignorar se for uma palavra que começa com letra minúscula no texto (a menos que seja nome próprio real)
-            primeira_palavra = ent.text.split()[0].lower()
-            if primeira_palavra in VERBOS_ELOCUCAO_LEMMAS or len(ent.text.split()) > 3:
-                continue
-                
-            entidades.append({
-                "chave": ent.text.strip().title(),
-                "genero": _genero_por_morfologia(ent.root),
-                "traco": "",
-            })
+        if ent.label_ not in LABELS_FALANTE:
+            continue
+        if ent.text.lower().startswith("capítulo"):
+            continue
+        if ent.root.pos_ in ("VERB", "AUX"):
+            continue
+        if len(ent.text.split()) > 3:
+            continue
+
+        entidades.append({
+            "chave": str(ent.text.strip().title()),
+            "genero": _genero_por_morfologia(ent.root),
+            "traco": "",
+        })
 
     for token in doc:
         if not _eh_substantivo_humano(nlp_model, token):
@@ -108,10 +111,11 @@ def extrair_entidades_referenciais(nlp_model, texto: str, exigir_sujeito: bool =
             continue
             
         entidades.append({
-            "chave": f"Personagem_{token.lemma_.title()}",  # Ajuda a identificar no console que foi inferido
+            "chave": str(token.lemma_.title()),  # Ajuda a identificar no console que foi inferido
             "genero": _genero_por_morfologia(token),
             "traco": _traco_emocional(nlp_model, token),
         })
+        
     return entidades
 
 
@@ -121,6 +125,7 @@ def identificar_personagem(nlp_model, sentenca: str, estado: dict) -> tuple:
       2) sujeito é pronome (ela/ele) -> usa a última entidade daquele gênero
       3) sujeito está oculto/elíptico (ex.: 'dizia consigo') -> usa a
          última entidade mencionada na narração, seja ela nomeada ou não
+      4) sujeito é uma partícula/quantificador ("um", "algum", "nenhum") com o substantivo de verdade a um nível abaixo ("um dos FIÉIS")
     """
     if not sentenca:
         return None, None
@@ -142,7 +147,7 @@ def identificar_personagem(nlp_model, sentenca: str, estado: dict) -> tuple:
 
         for filho in sujeitos:
             texto_filho = filho.text.lower()
-            # CORREÇÃO 3: Machado de Assis usa muito o pronome "que" como sujeito ("o discurso QUE proferiu")
+            # CORREÇÃO 3: pronome como sujeito ("o discurso QUE proferiu")
             if texto_filho in ("que", "quem", "o qual"):
                 if estado.get("ultima_entidade"):
                     return estado["ultima_entidade"], "elipse_relativa"
@@ -154,7 +159,14 @@ def identificar_personagem(nlp_model, sentenca: str, estado: dict) -> tuple:
                 return filho.text.title(), "nome_proprio"
             if _eh_substantivo_humano(nlp_model, filho):
                 return filho.lemma_.title(), "descricao"
-
+            
+            # CORREÇÃO 4 (NOVA): sujeito é uma partícula tipo "um"/"algum"
+            # e o substantivo humano de verdade está preso dentro dela
+            # (ex.: "um DOS FIÉIS disse" -> "fiéis" é filho de "um"
+            for neto in filho.children:
+                if _eh_substantivo_humano(nlp_model, neto):
+                    return neto.lemma_.title(), "sujeito_composto"
+                
     return None, None
 
 

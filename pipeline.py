@@ -22,11 +22,12 @@ def processar_pipeline(caminho_pdf: str, modo_dialogo: str = "auto"):
 
     for i, bloco in enumerate(blocos):
         if bloco["tipo"] == "narrador":
-            # Toda menção a pessoa na narração (nomeada ou não) atualiza
-            # quem é "a entidade mais recente" - é isso que resolve o
-            # sujeito elíptico ("dizia consigo") mais adiante.
-            entidades = extrair_entidades_referenciais(nlp, bloco["texto"])
-            atualizar_saliencia(entidades, estado, catalogo)
+                # Toda menção a pessoa na narração (nomeada ou não) atualiza
+                # quem é "a entidade mais recente" - é isso que resolve o
+                # sujeito elíptico ("dizia consigo") mais adiante.
+            if not bloco.get("e_cabecalho"):
+                entidades = extrair_entidades_referenciais(nlp, bloco["texto"])
+                atualizar_saliencia(entidades, estado, catalogo)
             continue
 
         atribuidor = selecionar_atribuidor(blocos, i)

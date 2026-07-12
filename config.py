@@ -49,4 +49,4 @@ LABELS_FALANTE = {"PER", "ORG", "MISC"}
 
 LIMITE_CHARS_TTS = 800          # tamanho máx. de texto por chamada ao TTS
 MODELO_SPACY = "pt_core_news_lg"
-MODELO_TTS = "gemini-3.1-flash-tts-preview"
+MODELO_TTS = "gemini-2.5-flash-tts"

@@ -1,6 +1,6 @@
 spacy
 pydub
 google-genai
-deep-translator
 python-dotenv
 PyMuPDF
+click

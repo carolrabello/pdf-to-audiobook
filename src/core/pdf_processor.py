@@ -33,22 +33,48 @@ def extrair_texto_pdf(caminho_pdf: str) -> str:
 def _juntar_linhas_quebradas(texto: str) -> str:
     """
     PDFs quebram linha pelo layout visual, não pela gramática. Isso faz uma
-    única frase virar 2 "sentenças" para o nosso parser. Regra simples: se
-    uma linha NÃO termina em pontuação final (. ! ? : ; " ”), ela continua
-    na próxima linha -> junta com espaço. Linha em branco continua sendo
-    respeitada como fim de parágrafo.
+    única frase virar 2 "sentenças" para o nosso parser. Regra: se uma
+    linha não termina em pontuação final, ela continua na próxima -> junta.
+
+    Exceção: títulos de capítulo ("CAPÍTULO I", "Óbito do Autor") também
+    não terminam em pontuação, mas NÃO são a mesma frase da narração que
+    vem a seguir. Por isso, ao detectar o início de um cabeçalho, ele é
+    isolado e marcado com "@CABECALHO@", pra ser pulado mais adiante na
+    extração de personagens - não importa o que o NER ache dele.
     """
     paragrafos = texto.split("\n\n")
     resultado = []
+
     for paragrafo in paragrafos:
-        linhas = [linha.strip() for linha in paragrafo.split("\n") if linha.strip()]
-        linha_unica = ""
+        linhas = [l.strip() for l in paragrafo.split("\n") if l.strip()]  # noqa: E741
+        saida, atual, em_cabecalho = [], "", False
+
         for linha in linhas:
-            if not linha_unica:
-                linha_unica = linha
-            elif re.search(r'[\.\!\?\:\;"”]\s*$', linha_unica):
-                linha_unica += "\n" + linha  # frase anterior já fechou, mantém quebra
+            inicia_cabecalho = bool(re.match(r'^cap[íi]tulo\b', linha, re.IGNORECASE))
+            linha_curta = len(linha.split()) <= 5
+
+            if inicia_cabecalho:
+                if atual:
+                    saida.append(atual)
+                atual = "@CABECALHO@ " + linha
+                em_cabecalho = True
+                continue
+
+            if em_cabecalho and linha_curta:
+                atual += " " + linha  # ex.: "Óbito do Autor" continua o título
+                continue
+            em_cabecalho = False
+
+            if not atual:
+                atual = linha
+            elif re.search(r'[\.\!\?\:\;"”]\s*$', atual):
+                saida.append(atual)
+                atual = linha
             else:
-                linha_unica += " " + linha  # frase continua, junta
-        resultado.append(linha_unica)
+                atual += " " + linha
+
+        if atual:
+            saida.append(atual)
+        resultado.append("\n".join(saida))
+
     return "\n\n".join(resultado)
