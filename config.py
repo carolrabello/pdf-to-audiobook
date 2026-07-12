@@ -37,6 +37,23 @@ LIMIAR_SIMILARIDADE_HUMANO = 0.55
 
 PALAVRAS_TOM = {"voz", "tom", "olhar", "expressão"}
 
+# Tags oficiais do Gemini TTS (Modo 1 = som não-verbal, Modo 2 = modificador
+# de estilo — nenhuma delas é falada pelo modelo, por isso são seguras).
+# "ancora" é a palavra em português usada pra comparar por similaridade de
+# vetor (mesma técnica do ANCORAS_HUMANO); "tag" é o texto oficial em
+# colchetes; "estilo" é um reforço em linguagem natural, recomendado pela
+# própria doc do Gemini pra aumentar a confiabilidade da tag.
+CATEGORIAS_EMOCAO = {
+    "grito":      {"ancora": "gritar",    "tag": "[shouting]",       "estilo": "Diga a fala a seguir gritando"},
+    "sussurro":   {"ancora": "sussurrar", "tag": "[whispering]",     "estilo": "Diga a fala a seguir sussurrando"},
+    "velocidade": {"ancora": "rápido",    "tag": "[extremely fast]", "estilo": "Fale rapidamente"},
+    "riso":       {"ancora": "rir",       "tag": "[laughing]",       "estilo": "Reaja com uma risada"},
+    "suspiro":    {"ancora": "suspirar",  "tag": "[sigh]",           "estilo": "Solte um suspiro"},
+    "hesitacao":  {"ancora": "hesitar",   "tag": "[uhm]",            "estilo": "Fale com uma hesitação natural"},
+    "sarcasmo":   {"ancora": "irônico",   "tag": "[sarcasm]",        "estilo": "Diga a fala a seguir com sarcasmo"},
+}
+LIMIAR_SIMILARIDADE_EMOCAO = 0.5
+
 STOPWORDS_EMOCAO = {
     "muito", "bastante", "pouco", "tão", "quase", "apenas", "bem", "mal",
     "mais", "menos", "já", "ainda", "assim", "então", "aqui", "ali", "lá",
@@ -49,4 +66,4 @@ LABELS_FALANTE = {"PER", "ORG", "MISC"}
 
 LIMITE_CHARS_TTS = 800          # tamanho máx. de texto por chamada ao TTS
 MODELO_SPACY = "pt_core_news_lg"
-MODELO_TTS = "gemini-2.5-flash-tts"
+MODELO_TTS = "gemini-2.5-flash-preview-tts"

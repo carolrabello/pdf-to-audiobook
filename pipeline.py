@@ -4,10 +4,7 @@ nem de TTS aqui dentro - só decide "o que chamar, em que ordem".
 """
 from src.core.pdf_processor import extrair_texto_pdf
 from src.core.text_parser import parsear_texto, selecionar_atribuidor
-from src.core.nlp_analyzer import (
-    carregar_modelo, identificar_personagem,
-    extrair_entidades_referenciais, extrair_tag_emocao,
-)
+from src.core.nlp_analyzer import carregar_modelo, identificar_personagem, extrair_entidades_referenciais, extrair_tag_emocao
 from src.core.catalog_manager import criar_catalogo, criar_estado_saliencia, registrar_personagem, atualizar_saliencia
 
 

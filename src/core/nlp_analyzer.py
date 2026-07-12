@@ -11,17 +11,13 @@ Aqui ficam os itens 2 e 3 do TCC:
           versão enxuta de correferência, sem depender de um modelo
           de coreference pronto (não existe um confiável para PT-BR).
 """
-import re
 import spacy
-from deep_translator import GoogleTranslator
 
 from config import (
     VERBOS_ELOCUCAO_LEMMAS, ANCORAS_HUMANO, LIMIAR_SIMILARIDADE_HUMANO,
-    PALAVRAS_TOM, STOPWORDS_EMOCAO, PRONOMES_FEM, PRONOMES_MASC,
+    PALAVRAS_TOM, CATEGORIAS_EMOCAO, LIMIAR_SIMILARIDADE_EMOCAO, STOPWORDS_EMOCAO, PRONOMES_FEM, PRONOMES_MASC,
     LABELS_FALANTE, MODELO_SPACY,
 )
-
-_tradutor_en = GoogleTranslator(source="pt", target="en")
 
 
 def carregar_modelo():
@@ -171,12 +167,28 @@ def identificar_personagem(nlp_model, sentenca: str, estado: dict) -> tuple:
 
 
 def extrair_tag_emocao(nlp_model, texto_narrador: str, traco_personagem: str = "") -> tuple:
-    """Procura advérbios/adjetivos ligados ao verbo de elocução ou a
-    palavras como 'voz'/'tom'. Se não achar nada, usa o traço emocional
-    do personagem (adjetivo que o descreve, ex. 'triste') como reforço -
-    é mais fraco, mas melhor que devolver neutro sem necessidade."""
+    """Junta pistas de emoção (advérbios/adjetivos perto do verbo de
+    elocução, palavras como 'voz'/'tom', ou o traço do personagem) e monta
+    a instrução pro Gemini TTS SEM TRADUÇÃO - pt-BR é idioma com suporte
+    total (GA) no Gemini TTS, então o comando de estilo vai direto em
+    português.
+
+    Duas saídas possíveis, que podem se combinar:
+      - tag entre colchetes (ex.: '[shouting]') só pra um punhado de
+        efeitos testados e documentados pelo Google (grito, sussurro,
+        riso etc.), reconhecidos por similaridade de vetor com uma âncora
+        em português;
+      - comando de estilo em português (ex.: 'Diga a fala a seguir com um
+        tom triste') pra qualquer outro adjetivo emocional que não bata
+        com nenhuma dessas âncoras.
+
+    Isso resolve o bug do TG2: antes a palavra em português era traduzida
+    pro inglês e jogada crua entre colchetes (ex.: 'alta' -> '[high]'),
+    o que não é nenhuma tag reconhecida pelo Gemini e ocasionalmente
+    disparava o bloqueio de PROHIBITED_CONTENT.
+    """
     if not texto_narrador.strip() and not traco_personagem:
-        return "neutral", "sem_narrador"
+        return {"estilo": None, "tags": []}, "sem_narrador"
 
     doc = nlp_model(texto_narrador) if texto_narrador.strip() else None
     palavras = []
@@ -196,19 +208,47 @@ def extrair_tag_emocao(nlp_model, texto_narrador: str, traco_personagem: str = "
         palavras.append(traco_personagem)
 
     if not palavras:
-        return "neutral", "sem_modificadores"
+        return {"estilo": None, "tags": []}, "sem_modificadores"
 
-    tags, vistos = [], set()
+    tags_encontradas, vistos = [], set()
+    palavra_estilo = None
+
     for pt_word in palavras:
         if pt_word in vistos:
             continue
         vistos.add(pt_word)
-        try:
-            traduzido = _tradutor_en.translate(pt_word).lower().replace(" ", "_")
-            en_word = re.sub(r"[^a-z_]", "", traduzido)
-        except Exception:
-            en_word = ""
-        if en_word:
-            tags.append(en_word)
 
-    return (", ".join(tags), "traduzido") if tags else ("neutral", "falha_traducao")
+        categoria = _categoria_emocao_por_similaridade(nlp_model, pt_word)
+        if categoria:
+            tags_encontradas.append(CATEGORIAS_EMOCAO[categoria]["tag"])
+        elif palavra_estilo is None:
+            # guarda só a primeira, pra não empilhar comandos de estilo
+            # contraditórios na mesma fala (ex.: "triste" e "nervoso" juntos)
+            palavra_estilo = pt_word
+
+    estilo = f"Diga a fala a seguir com um tom {palavra_estilo}" if palavra_estilo else None
+
+    if not tags_encontradas and not estilo:
+        return {"estilo": None, "tags": []}, "sem_correspondencia"
+
+    return {"estilo": estilo, "tags": tags_encontradas}, "classificado"
+
+
+def _categoria_emocao_por_similaridade(nlp_model, palavra: str) -> str | None:
+    """Compara 'palavra' (ex.: 'gritou', 'sussurrando') com a âncora de
+    cada categoria de CATEGORIAS_EMOCAO por similaridade de vetor. Retorna
+    a chave da categoria mais parecida (se passar do limiar) ou None."""
+    token = nlp_model.vocab[palavra]
+    if not token.has_vector:
+        return None
+
+    melhor_categoria, melhor_score = None, LIMIAR_SIMILARIDADE_EMOCAO
+    for chave, info in CATEGORIAS_EMOCAO.items():
+        ancora_tok = nlp_model.vocab[info["ancora"]]
+        if not ancora_tok.has_vector:
+            continue
+        score = token.similarity(ancora_tok)
+        if score >= melhor_score:
+            melhor_categoria, melhor_score = chave, score
+
+    return melhor_categoria

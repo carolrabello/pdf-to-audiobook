@@ -5,16 +5,11 @@ Mantém as otimizações do item 5: agrupa blocos do mesmo personagem/emoção
 """
 import time
 import wave
-import os
 import google.genai as genai
 import google.genai.types as genai_types
-from dotenv import load_dotenv
 from pydub import AudioSegment
 from config import GEMINI_API_KEY, LIMITE_CHARS_TTS, MODELO_TTS
 from pathlib import Path
-
-load_dotenv()
-CHAVE_GEMINI = os.getenv('GEMINI_API_KEY')
 
 def agrupar_blocos(blocos: list) -> list:
     """Funde blocos sequenciais do mesmo personagem e mesma emoção."""
@@ -60,13 +55,33 @@ def preparar_segmentos(blocos_agrupados: list) -> list:
     return segmentos
 
 
-def _aplicar_tag_emocao(texto: str, emocao: str) -> str:
-    # Adiciona a tag de emoção no início do texto, para que o Gemini TTS fale com a entonação e sotaque corretos
+def _aplicar_tag_emocao(texto: str, emocao) -> str:
+    # Adiciona o comando de estilo e/ou tags oficiais no início do texto,
+    # sempre em português (pt-BR é GA no Gemini TTS - não precisa traduzir).
     direcao = "Fale em português do Brasil, com sotaque brasileiro. "
     if not emocao or emocao == "neutral":
         return direcao + texto
-    tags = [f"[{t.strip()}]" for t in emocao.split(",")]
-    return f"{direcao}{' '.join(tags)} {texto}"
+
+    estilo = emocao.get("estilo") if isinstance(emocao, dict) else None
+    tags = emocao.get("tags") if isinstance(emocao, dict) else []
+
+    prefixo = f"{estilo}. " if estilo else ""
+    tags_texto = (" ".join(tags) + " ") if tags else ""
+    return f"{direcao}{prefixo}{tags_texto}{texto}"
+
+
+def _descrever_emocao(emocao) -> str:
+    """Só formata a emoção numa string curta pra exibir no dry_run."""
+    if not emocao or emocao == "neutral":
+        return "—"
+    if isinstance(emocao, dict):
+        partes = []
+        if emocao.get("estilo"):
+            partes.append(emocao["estilo"])
+        if emocao.get("tags"):
+            partes.append(" ".join(emocao["tags"]))
+        return "; ".join(partes) if partes else "—"
+    return str(emocao)
 
 
 def dry_run(blocos: list, catalogo: dict) -> list:
@@ -75,19 +90,19 @@ def dry_run(blocos: list, catalogo: dict) -> list:
     segmentos = preparar_segmentos(agrupados)
 
     print(f"\n{'=' * 70}\n DRY RUN — {len(segmentos)} segmento(s) para síntese\n{'=' * 70}")
-    print(f"{'#':<4} {'PERSONAGEM':<14} {'VOZ':<10} {'EMOÇÃO':<20} TEXTO (início)")
+    print(f"{'#':<4} {'PERSONAGEM':<14} {'VOZ':<10} {'EMOÇÃO':<35} TEXTO (início)")
     print("-" * 70)
     for i, seg in enumerate(segmentos):
         info = catalogo.get(seg["personagem"], catalogo["Narrador"])
-        emocao = seg["emocao"] if seg["emocao"] != "neutral" else "—"
+        emocao = _descrever_emocao(seg["emocao"])
         preview = seg["texto"][:50].replace("\n", " ")
-        print(f"{i:<4} {seg['personagem']:<14} {info['voz']:<10} {emocao:<20} {preview}...")
+        print(f"{i:<4} {seg['personagem']:<14} {info['voz']:<10} {emocao:<35} {preview}...")
 
     print(f"\nPersonagens detectados: {[p for p in catalogo if p != 'Narrador']}")
     return segmentos
 
 
-def sintetizar_gemini(client, texto: str, voz: str, emocao: str, arquivo: str, max_tentativas: int = 5) -> tuple:
+def sintetizar_gemini(client, texto: str, voz: str, emocao: str, arquivo: str, max_tentativas: int = 3) -> tuple:
     """Retorna (sucesso: bool, usou_fallback: bool)."""
     def _tentar(texto_para_enviar: str) -> bool:
         for tentativa in range(1, max_tentativas + 1):
@@ -129,10 +144,19 @@ def sintetizar_gemini(client, texto: str, voz: str, emocao: str, arquivo: str, m
     return sucesso, sucesso  # se deu certo aqui, foi via fallback
 
 
-def gerar_audiobook(blocos: list, catalogo: dict, arquivo_final: str = "data/outputs/audiobook.mp3") -> str:
-    Path("data/outputs").mkdir(parents=True, exist_ok=True)
+def gerar_audiobook(blocos: list, catalogo: dict, caminho_arquivo_origem: str) -> str:
+    # 1. Extrai apenas o nome do arquivo base (ex: "livro.pdf" vira "livro")
+    nome_base = Path(caminho_arquivo_origem).stem
+    
+    # 2. Cria a pasta usando o nome do livro extraído
+    pasta_saida = Path(f"data/outputs/{nome_base}")
+    pasta_saida.mkdir(parents=True, exist_ok=True)
+    
+    # 3. Define que o MP3 final terá o mesmo nome e ficará dentro da nova pasta
+    arquivo_final = str(pasta_saida / f"{nome_base}.mp3")
 
-    print("\nAgrupando e segmentando blocos...")
+    print(f"\nCriando pasta e salvando em: {pasta_saida}")
+    print("Agrupando e segmentando blocos...")
     segmentos = preparar_segmentos(agrupar_blocos(blocos))
     print(f"Síntese: {len(segmentos)} segmento(s) | limite {LIMITE_CHARS_TTS} chars")
 
@@ -141,7 +165,9 @@ def gerar_audiobook(blocos: list, catalogo: dict, arquivo_final: str = "data/out
 
     for i, seg in enumerate(segmentos):
         info = catalogo.get(seg["personagem"], catalogo["Narrador"])
-        arquivo_temp = f"data/outputs/_seg_{i:03d}.wav"
+        
+        # 4. Salva os arquivos .wav DENTRO da pasta do respectivo livro
+        arquivo_temp = str(pasta_saida / f"_seg_{i:03d}.wav")
         print(f"[{i:01d}/{len(segmentos) - 1}] {seg['personagem']:<14} | {info['voz']}")
 
         sucesso, usou_fallback = sintetizar_gemini(client, seg["texto"], info["voz"], seg["emocao"], arquivo_temp)
@@ -151,6 +177,7 @@ def gerar_audiobook(blocos: list, catalogo: dict, arquivo_final: str = "data/out
                 pulados.append((i, seg["personagem"], "gerado SEM sotaque/emoção (fallback)"))
         else:
             pulados.append((i, seg["personagem"], "trecho totalmente descartado"))
+        
         if i < len(segmentos) - 1:
             time.sleep(6.5)
 
@@ -162,7 +189,7 @@ def gerar_audiobook(blocos: list, catalogo: dict, arquivo_final: str = "data/out
     try:
         final.export(arquivo_final, format="mp3")
     except PermissionError:
-        alternativo = arquivo_final.replace(".mp3", f"_{int(time.time())}.mp3")
+        alternativo = str(pasta_saida / f"{nome_base}_{int(time.time())}.mp3")
         print(f"Não consegui sobrescrever {arquivo_final} (arquivo em uso?). Salvando como {alternativo}")
         final.export(alternativo, format="mp3")
         arquivo_final = alternativo
@@ -172,4 +199,5 @@ def gerar_audiobook(blocos: list, catalogo: dict, arquivo_final: str = "data/out
         print(f"\nATENÇÃO: {len(pulados)} segmento(s) ficaram de fora do áudio final:")
         for idx, personagem, preview in pulados:
             print(f"  [{idx}] {personagem}: {preview}...")
+            
     return arquivo_final

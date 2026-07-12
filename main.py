@@ -4,7 +4,6 @@ Ponto de entrada. Uso:
     python main.py data/inputs/brasCubasteste.pdf --gerar     -> gera o MP3 de fato
 """
 import argparse
-
 from pipeline import processar_pipeline
 from src.services.tts_service import dry_run, gerar_audiobook
 
@@ -18,7 +17,7 @@ def main():
     blocos, catalogo = processar_pipeline(args.pdf)
 
     if args.gerar:
-        arquivo = gerar_audiobook(blocos, catalogo)
+        arquivo = gerar_audiobook(blocos, catalogo, args.pdf)
         print(f"\nAudiobook gerado em: {arquivo}")
     else:
         dry_run(blocos, catalogo)
