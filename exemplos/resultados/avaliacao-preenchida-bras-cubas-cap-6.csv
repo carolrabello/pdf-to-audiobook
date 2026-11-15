@@ -1,0 +1,11 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;Anda visitando os defuntos?;"De dois grandes namorados, de duas paixões sem freio, nada mais havia ali, vinte anos depois; havia apenas dois corações";Disse-lhe eu.;São João;elipse_sujeito;N;Brás Cubas (narrador)
+2;Que idéias essas!;"Eu estava só, em casa, com um simples enfermeiro; podíamos falar um ao outro, sem perigo.Virgília deu-me longas notícias";Interrompeu-me Virgília um tanto zangada.;Narrando-As Com Graça;fallback;N;Virgília
+3;Jesus! são três horas. Vou me embora;E vendo o relógio:;Já?;Virgília;fallback;S;
+4;"Já; virei amanhã ou depois.";Já?;;Virgília;fallback;S;
+5;Não sei se faz bem,;;"retorqui;";Virgília;fallback;N;Brás Cubas
+6;o doente é um solteirão e a casa não tem senhoras...;"retorqui;";;Virgília;fallback;N;Brás Cubas
+7;Sua mana?;;;Virgília;fallback;S;
+8;Há de vir cá passar uns dias, mas não pode ser antes de sábado.;;Virgília refletiu um instante, levantou os ombros e disse com gravidade:;Virgília;elipse_sujeito;N;Brás Cubas
+9;Estou velha! Ninguém mais repara em mim. Mas, para cortar dúvidas, virei com o Nhonhô.;Virgília refletiu um instante, levantou os ombros e disse com gravidade:;Nhonhô era um bacharel, único filho de seu casamento, que, na idade de cinco anos, fora cúmplice inconsciente de nossos ;Virgília;elipse_sujeito;S;
+10;"Nhonhô, não repares nesse grande manhoso que aí está; não quer falar para fazer crer que está à morte.";Virgília adivinhoume e disse ao filho:;Sorriu o filho, eu creio que também sorri, e tudo acabou em pura galhofa, Virgília estava serena e risonha, tinha o aspe;Virgília;nome_proprio;S;

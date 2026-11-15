@@ -1,0 +1,127 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;Que tens tu, Jeromo?...;Mal tocou no que a mulher lhe apresentou à mesa e meteu-se logo depois na cama, ordenando-lhe que fosse ter com João Rom;;Mulher;fallback;S;Implicito piedade
+2;Morrinhento, filha... Vai, anda!;;;Mulher;fallback;N;Jerônimo
+3;Mas sentes-te mal?;;;Mulher;fallback;S;Implicito piedade
+4;Ó mulher! vai fazer o que te disse e ao depois então darás à língua!;;;Mulher;fallback;N;Jerônimo
+5;Valha-me a Virgem! Não sei se haverá chá preto na venda!;;E ela saiu, aflita.;Mulher;fallback;S;Implicito piedade
+6;Pois um homem rijo, que nunca caia doente? Seria a febre amarela?... Jesus, Santo Filho de Maria, que nem pensar nisso e;Qualquer novidade no marido, por menor que fosse, punha-a doida.;A notícia espalhou-se logo ali entre as lavadeiras.;Marido;fallback;N;pensamento de piedade
+7;Foi da friagem da noite,;A notícia espalhou-se logo ali entre as lavadeiras.;afirmou a Bruxa, e deu um pulo à casa do trabalhador para receitar.;Bruxa;nome_proprio;S;bruxa
+8;Ah!;Jerônimo perdeu a paciência e ia protestar brutalmente contra semelhante invasão, quando, pelo cheiro, sentiu que a Rita;E desfranziu-se-lhe o rosto.;Rita;fallback;N;Jerônimo
+9;Bons dias! Então que é isso, vizinho? Você caiu doente com a minha chegada? Se tal soubera não vinha!;E desfranziu-se-lhe o rosto.;Ele riu-se.;Rita;fallback;S;
+10;Gostei de vê-la ontem dançar, disse, muito mais animado.;Jerônimo apertou-lhe a mão.;;Jerônimo;fallback;S;
+11;Já tomou algum remédio?...;;;Jerônimo;fallback;N;rita
+12;A mulher falou ai em chá preto...;;;Jerônimo;fallback;S;
+13;Chá! Que asneira! Chá é água morna! Isso que você tem é uma resfriagem. Vou-lhe fazer uma xícara de café bem forte para ;;E saiu logo, deixando todo quarto impregnado dela.;Jerônimo;fallback;N;rita
+14;Mas que sentes tu, Jeromo?... Fala, homem! Não me dizes nada! Assim m’assustas...;Voltou-lhe então o mal-estar e desapareceu o último vestígio do sorriso que ele tivera havia pouco.;;Marido;fallback;N;piedade
+15;Que tens, diz’-lo!;;;Marido;fallback;N;piedade
+16;Não cozas o chá. Vou tomar outra coisa...;;;Marido;fallback;S;Jerônimo
+17;Não queres o chá? Mas é o remédio, filhinho de Deus!;;;Marido;fallback;N;piedade
+18;Já te disse que tomo outra mezinha. Oh!;;Piedade não insistiu.;Marido;fallback;S;Jerônimo
+19;Queres tu um escalda-pés?...;Piedade não insistiu.;;Marido;fallback;N;piedade
+20;Toma-lo tu!;;Ela calou-se.;Marido;fallback;S;Jerônimo
+21;Era naturalmente a moléstia que o punha rezinguento.;Ia a dizer que nunca o vira assim tão áspero e seco, mas receou importuná-lo.;Jerônimo fechara os olhos, para a não ver, e ter-se-ia, se pudesse, fechado por dentro, para a não sentir.;Marido;elipse_sujeito;N;pensamento de piedade
+22;‘Stá bem, filha, não vais tratar do teu serviço?...;Ela, porém, coitada! fora assentar-se à beira da cama, humilde e solicita, a suspirar, vivendo naquele instante, para e ;;Doente;fallback;N;Doente é Jerônimo
+23;Não te dê isso cuidado! Não parou o trabalho! Pedi à Leocádia que me esfregasse a roupa. Ela hoje tinha pouco que fazer ;;;Doente;fallback;N;piedade
+24;Andaste mal...;;;Doente;fallback;N;Doente é Jerônimo
+25;Ora! Não há três dias que fiz outro tanto por ela... E demais, não foi que tivesse o homem doente, era a calaçaria do ca;;;Doente;fallback;N;piedade
+26;Bom, bom, filha! não digas mal da vida alheia! Melhor seria que estivesses à tua tina em vez de ficar ai a murmurar do p;;;Doente;fallback;N;Doente é Jerônimo
+27;Mas estou-te a dizer que não há transtorno!...;;;Doente;fallback;N;piedade
+28;"Transtorno já é estar eu parado; e o pior será pararem os dois!";;;Doente;fallback;N;Doente é Jerônimo
+29;Eu queria ficar a teu lado, Jeromo!;;;Doente;fallback;N;piedade
+30;E eu acho que isso é tolice! Vai! anda!;;Ela ia retirar-se, como um animal enxotado, quando deu com a Rita, que entrava muito ligeira e sacudida, trazendo na mão;Doente;fallback;N;Doente é Jerônimo
+31;Ah! fez Piedade, sem encontrar uma palavra para a mulata.;Ela ia retirar-se, como um animal enxotado, quando deu com a Rita, que entrava muito ligeira e sacudida, trazendo na mão;E deixou-se ficar.;Rita;fallback;N;“Ah!” fala de piedade, o resto é narração
+32;Isso é que o vai pôr fino!;Rita, despreocupadamente, alegre e benfazeja como sempre, pousou a vasilha sobre a cômoda do oratório e abriu o cobertor;disse.;Rita;elipse_sujeito;S;faltou “Vocês também, seus portugueses, por qualquer coisinha ficam logo pra morrer, com uma cara da última hora! E ai, ai, Jesus, meu Deus! Ora esperte-se! Não me seja maricas!”
+33;Pois não é assim mesmo?;Ele riu-se assentando-se na cama.;perguntou ela a Piedade, apontando para o carão barbado de Jerônimo.;Deus;elipse_sujeito;N;rita. Faltou “Olhe só pr’aquela cara e diga-me se não está a pedir que o enterrem!”
+34;Está-me a parecer que agora te achas melhor, hein?... desembuchou afinal, procurando o olhar do marido, sem conseguir di;Não era a inteligência nem a razão o que lhe apontava o perigo, mas o instinto, o faro sutil e desconfiado de toda a fêm;;Doente;fallback;N;piedade
+35;Só com o cheiro! reforçou a mulata, apresentando o café ao doente. Beba, ande! beba tudo e abafe-se! Quero, quando volta;;E acrescentou, falando à Piedade, em tom mais baixo e pousando-lhe a mão no ombro carnudo:;Doente;elipse_sujeito;N;rita. “ reforçou a mulata, apresentando o café ao doente.” é narração
+36;"Ele daqui a nada deve estar ensopado de suor; mude-lhe toda a roupa e dê-lhe dois dedos de parati, logo que peça água. C";E acrescentou, falando à Piedade, em tom mais baixo e pousando-lhe a mão no ombro carnudo:;E saiu expedida, agitando as saias, de onde se evolavam eflúvios de manjerona.;Doente;elipse_sujeito;N;rita
+37;Deus queira que isto não te vá fazer mal em vez de bem!... Nunca tomas café, nem gostas!...;Piedade chegou-se então para o cavouqueiro, que já tinha sobre as pernas o cobertor oferecido pela Rita, e, ajudando-o a;;Rita;fallback;N;piedade
+38;Isto não é por gosto, filha, é remédio!;;"Ele com efeito nunca entrara com o café e ainda menos com a cachaça; mas engoliu de uma assentada o conteúdo da tigela, ";Rita;fallback;N;Jerônimo
+39;Trata de sossegar! Não te mexas!;A mulher tratou de abafar-lhe bem os pés e foi buscar um xale para lhe cobrir a cabeça.;E dispôs-se a ficar junto da cama, a vigiá-lo, só andando na ponta dos pés, abafando a respiração, correndo a cada insta;Mulher;fallback;N;piedade
+40;Ainda bem!;O suor inundava-o.;exclamou ela, radiante.;Mulher;coref_fem;N;piedade
+41;Tem juízo! Acomoda-te! Não vês que estás doente?...;E a mulher, a rir-se, lisonjeada, ralhava:;Ele não insistiu.;Mulher;fallback;N;piedade
+42;Bebe isto, não bebas a água agora.;Piedade foi buscar o parati.;;Mulher;fallback;N;piedade
+43;Isto é cachaça!;;;Mulher;fallback;N;Jerônimo
+44;Foi a Rita que disse para te dar...;;Jerônimo não precisou de mais nada para beber de um trago os dois dedos de restilo que havia no copo.;Mulher;fallback;N;piedade
+45;Então, que me diz agora? Sente-se ou não melhorzinho?;Quando Piedade chegou lá fora, dando parte do bom resultado do remédio, a Rita correu de novo ao quarto do doente.;Ele voltou para a rapariga o seu olhar de animal prostrado e, por única resposta, passou-lhe o braço esquerdo na cintura;Doente;fallback;N;rita
+46;Olhe que peste! Faça-se de tolo, que digo à sua mulher, hein? Ora vamos lá!;Rita, ao sentir-se empolgar pelo cavouqueiro, escapou-lhe das garras com um pulo.;Mas, como a Piedade entrava na salinha ao lado, disfarçou logo, acrescentando noutro tom:;Rapariga;elipse_sujeito;N;rita
+47;Agora é tratar de dormir e mudar de roupa, se suar outra vez Até logo!;Mas, como a Piedade entrava na salinha ao lado, disfarçou logo, acrescentando noutro tom:;E saiu.;Rapariga;elipse_sujeito;N;rita
+48;Aqui não!;Leocádia esperava por ele debaixo das mangueiras.;disse ela, logo que o viu chegar.;Leocádia;coref_fem;S;“Aqui agora podem dar com a gente!..” É continuação da fala de leocádia 
+49;Então onde?;Aqui agora podem dar com a gente!...;;Gente;elipse_sujeito;N;henrique
+50;Vem cá!;;E tomou à sua direita, andando ligeira e meio vergada por entre as plantas.;Gente;fallback;N;leocádia
+51;Aqui!;Depois de alguns minutos, ela parou num lugar plantado de bambus e bananeiras, onde havia o resto de um telheiro em ruín;E Leocádia olhou para os lados, assegurando-se de que estavam a sós.;Henrique;fallback;N;leocádia
+52;"Espera! preciso tirar a saia; está encharcada!";Henrique, sem largar o coelho, atirou-se sobre ela, que o conteve:;;Henrique;fallback;N;leocádia
+53;Não faz mal! segredou ele, impaciente no seu desejo.;;;Henrique;fallback;S;“segredou ele, impaciente no seu desejo.” é narração
+54;Pode-me vir um corrimento!;;E sacou fora a saia de lã grossa, deixando ver duas pernas, que a camisa a custo só cobria até o joelho, grossas, maciça;Henrique;fallback;N;leocádia
+55;"Avia-te! Anda! apressou ela, lançando-se de costas ao chão e arregaçando a fralda até a cintura; as coxas abertas.";E sacou fora a saia de lã grossa, deixando ver duas pernas, que a camisa a custo só cobria até o joelho, grossas, maciça;O estudante atirou-se, sôfrego, sentindo-lhe a frescura da sua carne de lavadeira, mas sem largar as pernas do coelho.;Henrique;fallback;N;"leocádia “ apressou ela, lançando-se de costas ao chão e arregaçando a fralda até a cintura; as coxas abertas.” é narração"
+56;Olha!;Passou-se um instante de silêncio entre os dois, em que as folhas secas do chão rangeram e farfalharam.;pediu ela, faz-me um filho, que eu preciso alugar-me de ama-de-leite...;Henrique;elipse_sujeito;N;leocádia
+57;Olha que matas o bichinho!;E o pobre brutinho, cujas pernas o estudante não largava, começou a queixar-se dos repelões que recebia cada vez mais ac;reclamou a lavadeira.;Família;elipse_sujeito;N;leocádia
+58;Com quem te esfregavas tu, sua vaca?!;Quando o ferreiro, logo em seguida, chegou perto da mulher, esta ainda não tinha acabado de vestir a saia molhada.;bradou ele, a botar os bofes pela boca.;Gente;elipse_sujeito;N;bruno
+59;Agora eu vi! sabes! Nega se fores capaz!;E foi debaixo de uma chuva de bofetadas e pontapés que acabou de amarrar a roupa.;;Leocádia;fallback;N;bruno
+60;Vá à pata que o pôs!;;exclamou ela, com a cara que era um tomate.;Leocádia;coref_fem;S;"“Já lhe disse que
+não quero saber de você pra nada, seu bêbedo!” é fala e foi considerada narração"
+61;Chega-te pra cá e verás se te abro aqui mesmo ou não o casco!;E, vendo que ele ia recomeçar a dança, abaixou-se depressa, segurou com ambas as mãos um matacão de granito que encontro;O ferreiro compreendeu que ela era capaz de fazer o que dizia e estacou lívido e ofegante.;Leocádia;elipse_sujeito;S;
+62;Arme a trouxa e rua! sabe?;O ferreiro compreendeu que ela era capaz de fazer o que dizia e estacou lívido e ofegante.;;Leocádia;elipse_sujeito;N;bruno
+63;Olha a desgraça! Tinha de muito assentado de ir! Queria era uma ocasião! Nem preciso de você pra nada, fique sabendo!;;E, para meter-lhe mais raiva, acrescentou, empinando a barriga:;Leocádia;elipse_sujeito;S;
+64;Já cá está dentro com que hei de ganhar a vida! Alugo-me de ama! Ou pensará que todos são como você, que nem para fazer ;E, para meter-lhe mais raiva, acrescentou, empinando a barriga:;;Leocádia;elipse_sujeito;S;
+65;Mas não me hás de levar nada de casa! Isso te juro eu, biraia!;;;Leocádia;fallback;N;bruno
+66;Ah, descanse! que não levarei nada do que é seu, nem preciso!;;;Leocádia;fallback;S;
+67;Põe essa pedra no chão!;;;Leocádia;fallback;N;bruno
+68;Um corno! Eu arrumo-ta na cabeça se te chegas pra cá!;;;Leocádia;fallback;S;
+69;Sim, sim, sim, contanto que te musques por uma vez!;;;Leocádia;fallback;N;bruno
+70;Pois então despache o beco!;;Ele virou-lhe as costas e tornou lentamente por onde viera, de cabeça pendida, as mãos nas algibeiras das calças, aparen;Leocádia;fallback;S;
+71;Ora gaitas!;Só então foi que ela se lembrou do coelho.;disse, endireitando-se e tomando direção contrária à do marido.;Leocádia;elipse_sujeito;S;
+72;"Ora, aquilo tinha de acontecer mais hoje mais amanhã! — Um belo dia a casa vinha abaixo!
+— A Leocádia parecia não deseja";O escândalo assanhou a estalagem inteira, como um jato de água quente sobre um formigueiro.;Mas ninguém atinava com quem diabo pilhara o Bruno a mulher no capinzal.;Leocádia;fallback;N;fala sem sujeito, pessoas do cortiço
+73;Leocádia era uma excelente rapariga, incapaz de tamanha safadagem!;O Albino tentou logo arranjar a reconciliação do casal, jurando que o Bruno estava enganado com certeza e que vira mal.;O ferreiro tapou-lhe a boca com uma bolacha, e ninguém mais se meteu a congraçá-los.;Bruno;fallback;N;Albino
+74;Era o que faltava que viesse também aquele salamaleque do inferno para azoinar uma criatura mais do que já estava!;A Machona, que não podia ouvir ninguém gritar mais alto do que ela, caiu-lhe em cima aos murros e o pôs fora do portão c;Dona Isabel, com as mãos cruzadas sobre o ventre, tinha para aquela destruição um profundo olhar de lástima.;Gente;elipse_sujeito;N;Machona
+75;Sempre os mesmos pedaços de asno!...;"A Bruxa, indiferente, não interrompera sequer o seu trabalho; ao passo que a das Dores, de mãos nas cadeiras, a sala pel";comentava franzindo o nariz.;Marido;elipse_sujeito;N;"Bruxa/outro; não é Marido"
+76;"Aquilo não tinha jeito, que diabo!
+Armavam lá as suas turras e os outros é que haviam de aturar?!... Sebo! que os mais n";Fez-se logo um alarido entre as lavadeiras.;Pombinha chegara à porta do número 15, dando fé do barulho, com uma costura na mão, e Nenen, toda afogueada do ferro de ;Marciana;elipse_sujeito;S;
+77;Não faziam tanta festa ao tal casamento? Pois que agüentassem! Ela estava bem livre de sofrer uma daquelas!;A Rita fingia não ligar importância ao fato e continuava a lavar à sua tina.;O velho Libório chegara-se para ver se, no meio da confusão, apanhava alguma coisa do despejo, e a Machona, notando que ;Bruno;fallback;N;rita
+78;Sai daí, safado! Toca lá no quer que seja, que te arranco a pele do rabo!;O velho Libório chegara-se para ver se, no meio da confusão, apanhava alguma coisa do despejo, e a Machona, notando que ;Um irmão do santíssimo entrara na estalagem, com a sua capa encarnada, a sua vara de prata em uma das mãos, na outra a s;Coisa;fallback;N;Machona
+79;Uma esmola para a cera do Sacramento!;Um irmão do santíssimo entrara na estalagem, com a sua capa encarnada, a sua vara de prata em uma das mãos, na outra a s;As mulheres abandonaram por um instante as tinas e foram beijar devotamente a colombina imagem do Espírito Santo.;Coisa;fallback;N;irmão do santíssimo
+80;Upa! Toma, diabo!;E a cada objeto que ela varria para o pátio, gritava sempre:;;Marido;elipse_sujeito;N;leocádia
+81;Aí vai o relógio! Upa! Toma, diabo!;;E o relógio espatifou-se na calçada.;Marido;fallback;N;leocádia
+82;Aí vai o alguidar!;E o relógio espatifou-se na calçada.;;Marido;fallback;N;leocádia
+83;Aí vai o jarro!;;;Marido;fallback;N;leocádia
+84;Aí vão os copos!;;;Marido;fallback;N;leocádia
+85;O cabide!;;;Marido;fallback;N;leocádia
+86;O garrafão!;;;Marido;fallback;N;leocádia
+87;O bacio!;;Um riso geral, comunicativo, absoluto, abafava o baralho da louça quebrando-se contra as pedras.;Marido;fallback;N;leocádia
+88;Upa! Toma, diabo!;E Leocádia já não precisava acompanhar os objetos com a sua frase de imprecação, porque cada um deles era recebido cá fo;E a limpeza prosseguia.;Leocádia;fallback;S;
+89;Não dá!;Os circunstantes o seguiram, atropeladamente, num clamor.;;Bruno;fallback;N;Pessoa 1 do cortiço
+90;Não pode!;;;Bruno;fallback;N;Pessoa 2 do cortiço
+91;Prende!;;;Bruno;fallback;N;Pessoa 3 do cortiço
+92;Não deixa bater!;;;Bruno;fallback;N;Pessoa 4 do cortiço
+93;Larga o pau!;;;Bruno;fallback;N;Pessoa 5 do cortiço
+94;Segura!;;;Bruno;fallback;N;Pessoa 6 do cortiço
+95;Agüenta!;;;Bruno;fallback;N;Pessoa 7 do cortiço
+96;Cerca!;;;Bruno;fallback;N;Pessoa 8 do cortiço
+97;Toma o porrete!;;E Leocádia escapou afinal das pauladas do marido, a quem o povaréu desarmara num fecha-fecha.;Bruno;fallback;N;Pessoa 2 do cortiço
+98;Ordem! Ordem! Vá de rumor!;E Leocádia escapou afinal das pauladas do marido, a quem o povaréu desarmara num fecha-fecha.;exclamava o vendeiro, a quem, aproveitando a confusão, haviam já ferrado um pontapé por detrás.;Marido;elipse_sujeito;N;"vendeiro; não é Marido"
+99;Pois você não vê esta galinha, que apanhei hoje com a boca na botija, não me vem ainda por cima dar cabo de tudo?!... in;O Alexandre, que vinha chegando do serviço nesse momento, apressou-se a correr para o lugar do conflito e cheio de autor;;Gente;fallback;N;bruno “interrogou o Bruno, espumando de raiva e quase sem fôlego para falar” é narração
+100;Porque você pôs em cacos o que é meu!;;gritou Leocádia.;Leocádia;nome_proprio;S;
+101;Está bom! está bom!;gritou Leocádia.;disse o polícia, procurando dar à voz inflexões autoritárias e reconciliadoras.;Leocádia;elipse_sujeito;N;alexandre/polícia
+102;É mentira!;Seu marido... acrescentou ele, voltando-se para a acusada, diz que a senhora...;interrompeu ela.;Marido;elipse_sujeito;N;leocádia
+103;Mentira?! É boa! Tinhas a saia despida e um homem por cima!;interrompeu ela.;;Marido;elipse_sujeito;N;bruno
+104;Quem era?;;Quem foi?;Marido;elipse_relativa;N;pessoas do cortiço
+105;Quem era o homem? interrogaram todos a um só tempo.;Quem foi?;;Marido;elipse_relativa;N;pessoas do cortiço “ interrogaram todos a um só tempo” é narração
+106;Quem era ele, no fim de contas? inquiriu também Alexandre.;;;Marido;fallback;N;alexandre/polícia “inquiriu também Alexandre.” é narração
+107;Não lhe pude ver as fuças!...;;"respondeu o ferreiro; mas, se o apanho, arrancava-lhe o sangue pelas costas!";Marido;elipse_sujeito;N;"bruno/ferreiro. “mas, se o apanho, arrancava-lhe o
+sangue pelas costas!” é continuação da fala"
+108;E mentira! repetiu Leocádia, agora sucumbida por uma reação de lágrimas. Há muito tempo que este malvado anda caçando pr;Houve um coro de gargalhadas.;Uma explosão de soluços a interrompeu.;Marido;fallback;N;leocádia. “Repetiu Leocádia, agora sucumbida por uma reação de lágrimas. Há muito tempo que este malvado anda caçando pretexto para romper comigo e, como eu não lho dou…” é narração
+109;Agora...;Desta vez não riram, mas um bichanar de cochichos formou-se em torno do seu pranto.;"continuou ela, enxugando os olhos na costa da mão; não sei o que será de mim, porque este homem, além de tudo, escangalh";Leocádia;coref_fem;S;"“ continuou ela, enxugando os olhos na costa da mão” é narração. Faltou resto da fala: “não sei o que será de
+mim, porque este homem, além de tudo, escangalhou-me até o que eu trouxe quando me casei
+com ele!..”"
+110;Não disseste que já tinhas ai dentro com que ganhar a vida?... É andar!;"continuou ela, enxugando os olhos na costa da mão; não sei o que será de mim, porque este homem, além de tudo, escangalh";;Leocádia;coref_fem;N;bruno
+111;É falso!;;soluçou Leocádia.;Leocádia;nome_proprio;S;
+112;Bem,;soluçou Leocádia.;"interveio Alexandre, embainhando o seu refle; está tudo terminado!";Alexandre;nome_proprio;S;
+113;Eu?! esfuziou o ferreiro. Você não me conhece!;Seu marido vai recebê-la em boa paz...;;Marido;descricao;N;bruno (o ferreiro). etiqueta 'esfuziou o ferreiro' dentro da fala
+114;Nem eu queria!;;retorquiu a mulher.;Mulher;descricao;N;"leocádia ('a mulher'); rótulo genérico 'Mulher' também usado para Piedade"
+115;Para onde vais tu?...;A Rita saiu-lhe ao encontro.;perguntou-lhe em voz baixa.;Rita;elipse_sujeito;S;
+116;Não sei, filha, por ai!... Hei de encontrar um furo!... Os cães não vivem?...;perguntou-lhe em voz baixa.;;Rita;elipse_sujeito;N;leocádia
+117;Espere um instante... disse a mulata. Olha, empurra a trouxa ai para dentro do meu cômodo.;;E correndo ao Albino, que lavava:;Albino;nome_proprio;N;rita “disse a mulata.” é narração
+118;Passa-me no sabão aquela roupa, ouviste?;E correndo ao Albino, que lavava:;;Albino;nome_proprio;N;rita
+119;E, quando Firmo acordar, diz-lhe que precisei ir a rua.;;Depois, deu um pulo ao quarto, mudou a saia molhada, atirou nos ombros o seu xale de crochê e, batendo nas costas da com;Albino;fallback;N;rita
+120;Anda cá comigo! não ficarás à toa!;Depois, deu um pulo ao quarto, mudou a saia molhada, atirou nos ombros o seu xale de crochê e, batendo nas costas da com;E as duas saíram, ambas sacudidas, deixando atrás de si suspensa a curiosidade do cortiço inteiro.;Companheira;fallback;N;rita

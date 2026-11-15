@@ -1,0 +1,22 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;Engana-se,;"Deixei-me ir, calado, não sei se por medo ou confiança; mas, dentro em pouco, a carreira de tal modo se tornou vertigino";replicou o animal,;Virgília;elipse_sujeito;N;animal. continuação da fala (cortada pelo parser)
+2;nós vamos à origem dos séculos.;replicou o animal,;"Insinuei que deveria ser muitíssimo longe; mas o hipopótamo não me entendeu ou não me ouviu, se é que não fingiu uma des";Virgília;elipse_sujeito;N;animal. continuação da fala
+3;Onde estamos?;Tentei falar, mas apenas pude grunhir esta pergunta ansiosa:;;Coisa;elipse_sujeito;N;Brás Cubas (narrador)
+4;Já passamos o Éden.;;;Coisa;fallback;N;animal
+5;"Bem; paremos na tenda de Abraão.";;;Coisa;fallback;N;Brás Cubas (narrador)
+6;Mas se nós caminhamos para trás!;;redargüiu motejando a minha cavalgadura.;Coisa;elipse_sujeito;N;animal
+7;"Chama-me Natureza ou Pandora; sou tua mãe e tua inimiga.";"Estupefato, não disse nada, não cheguei sequer a soltar um grito; mas, ao cabo de algum tempo, que foi breve, perguntei ";Ao ouvir esta última palavra, recuei um pouco, tomado de susto.;Estupefato;nome_proprio;N;Natureza/Pandora
+8;Vivo?;Vives: não quero outro flagelo.;perguntei eu, enterrando as unhas nas mãos, como para certificar me da existência.;Vives;elipse_sujeito;N;Brás Cubas
+9;"Sim, verme, tu vives. Não receies perder esse andrajo que é teu orgulho; provarás ainda, por algumas horas, o pão da dor";perguntei eu, enterrando as unhas nas mãos, como para certificar me da existência.;Dizendo isto, a visão estendeu o braço, segurou-me pelos cabelos e levantou-me ao ar, como se fora uma pluma.;Vives;elipse_sujeito;N;Natureza/Pandora
+10;Entendeste-me?;Ao mesmo tempo, nesse rosto de expressão glacial, havia um ar de juventude, mescla de força e viço, diante do qual me se;disse ela, no fim de algum tempo de mútua contemplação.;Coisa;coref_fem;N;Natureza/Pandora
+11;Não,;disse ela, no fim de algum tempo de mútua contemplação.;"respondi;";Vives;elipse_sujeito;N;Brás Cubas
+12;"nem quero entender-te; tu és absurda, tu és uma fábula. Estou sonhando, decerto, ou, se é verdade que enlouqueci, tu não";"respondi;";;Vives;elipse_sujeito;N;Brás Cubas
+13;Porque levo na minha bolsa os bens e os males, e o maior de todos, a esperança, consolação dos homens. Tremes?;;;Vives;fallback;N;Natureza/Pandora
+14;"Sim; o teu olhar fascina-me.";;;Vives;fallback;N;Brás Cubas
+15;"Creio; eu não sou somente a vida; sou também a morte, e tu estás prestes a devolver me o que te emprestei. Grande lasciv";;Quando esta palavra ecoou, como um trovão, naquele imenso vale, afigurou-me que era o último som que chegava a meus ouvi;Vives;fallback;N;Natureza/Pandora
+16;Pobre minuto!;Então, encarei-a com olhos súplices, e pedi mais alguns anos.;exclamou.;Vives;elipse_sujeito;N;Natureza/Pandora
+17;Viver somente, não te peço mais nada. Quem me pôs no coração este amor da vida, se não tu? e, se eu amo a vida, por que ;Que mais queres tu, sublime idiota?;;Vives;elipse_sujeito;N;Brás Cubas
+18;Porque já não preciso de ti. Não importa ao tempo o minuto que passa, mas o minuto que vem. O minuto que vem é forte, jo;;dizes tu?;Vives;fallback;N;Natureza/Pandora
+19;Tens razão,;Ao contemplar tanta calamidade, não pude reter um grito de angústia, que Natureza ou Pandora escutou sem protestar nem r;disse eu,;Pandora;elipse_sujeito;N;Brás Cubas
+20;a coisa é divertida e vale a pena, talvez monótona, mas vale a pena. Quando Job amaldiçoava o dia em que fora concebido,;disse eu,;A resposta foi compelir-me fortemente a olhar para baixo, e a ver os séculos que continuavam a passar, velozes e turbule;Pandora;elipse_relativa;N;Brás Cubas
+21;Bem, os séculos vão passando, chegará o meu, e passará também, até o último, que me dará a decifração da eternidade.;"Quis fugir, mas uma força misteriosa me retinha os pés; então disse comigo: —";E fixei os olhos, e continuei a ver as idades, que vinham chegando e passando, já então tranqüilo e resoluto, não sei at;Quis;fallback;N;Brás Cubas

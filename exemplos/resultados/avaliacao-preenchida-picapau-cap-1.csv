@@ -1,0 +1,35 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;Só acredito no que vejo com meus olhos, cheiro com o meu nariz, pego com minhas mãos ou provo com a ponta da minha língu;O que se dá é que as crianças logo que se transformam em gente grande fingem não mais acreditar no que acreditavam.;dizem os adultos;Gente;elipse_sujeito;S;"não explícito; provavelmente Dona Benta"
+2;Deus, por exemplo;Eles acreditam em mil coisas que seus olhos não vêem, nem o nariz cheira, nem os ouvidos ouvem, nem as mãos pegam.;disse Narizinho.;Narizinho;nome_proprio;S;
+3;Todos crêem em Deus e ninguém anda a pegá-lo, cheirá-lo, apalpá-lo.;disse Narizinho.;;Narizinho;nome_proprio;S;
+4;Exatamente.;;;Narizinho;fallback;N;"não explícito; provavelmente Dona Benta"
+5;E ainda acreditam na Justiça, na Civilização, na Bondade;;em mil coisas invisíveis, incheiráveis, impegáveis, sem som e sem gosto.;Narizinho;fallback;N;continuação da fala anterior (Dona Benta)
+6;Eu sei o que quer dizer;De modo que se as coisas do Mundo da Fábula não existem, então também não existem nem Deus, nem a Justiça, nem a Bondade;abstrato;Deus;nome_proprio;N;Emília
+7;disse Emília.;abstrato;É tudo quanto à gente não vê, nem cheira, nem ouve, nem prova, nem pega;Gente;descricao;X;só a etiqueta 'disse Emília'
+8;mas sente que há.;É tudo quanto à gente não vê, nem cheira, nem ouve, nem prova, nem pega;;Gente;descricao;S;Emília. Faltou trecho anterior da fala: É tudo quanto à gente não vê, nem cheira, nem ouve, nem prova, nem pega 
+9;Muito bem. Logo, o Mundo da Fábula existe, com todos os seus maravilhosos personagens.;;;Gente;fallback;N;"não explícito; provavelmente Dona Benta"
+10;E tanto existe;;declarou Dona Benta;Dona;nome_proprio;S;Dona = Dona Benta (nome cortado)
+11;que tenho aqui uma carta muito interessante, recebida hoje.;declarou Dona Benta;;Dona;nome_proprio;S;Dona = Dona Benta (nome cortado)
+12;É de mamãe, já sei!;;murmurou Pedrinho, aborrecido, com medo que fosse carta de Dona Antonica chamando-o para a cidade.;Pedrinho;nome_proprio;S;
+13;Errou, meu filho. A cartinha que recebi é do Pequeno Polegar ...;murmurou Pedrinho, aborrecido, com medo que fosse carta de Dona Antonica chamando-o para a cidade.;Ao ouvir tal notícia, a criançada pulou de contente.;Pedrinho;nome_proprio;N;Dona Benta
+14;Mostre, mostre a cartinha dele, vovó!;O Pequeno Polegar era, de fato, a maior das galantezas.;Dona Benta pôs os óculos e tirou da bolsa uma coisinha dobrada, pequeniníssima, uma pétala de rosa!;Narizinho;fallback;S;Narizinho (inferido)
+15;É o papelzinho em que ele escreve;Dona Benta pôs os óculos e tirou da bolsa uma coisinha dobrada, pequeniníssima, uma pétala de rosa!;e escreve sem tinta, com a ponta de um espinho.;Dona Benta;elipse_sujeito;S;
+16;A lente sumiu, vovó;Onde andaria a lente do binóculo desmanchado?;disse ele;Pedrinho;coref_masc;S;
+17;mas há os célebres olhos da Emília, mais penetrantes que todas as lentes do mundo.;disse ele;;Pedrinho;coref_masc;S;
+18;Até uma pulga no pêlo do dragão de S. Jorge, lá na lua, ela já;;;Pedrinho;fallback;S;
+19;detectou.;;;Pedrinho;fallback;S;
+20;Ótimo! Nesse caso, venha a Emília ler a cartinha do nosso amigo.;;Muito orgulhosa do seu papel, Emília aproximou-se rebolando.;Pedrinho;fallback;N;Dona Benta
+21;Ah! É rosa Bela Helena!;Tomou a pétala dobrada, cheirou-a:;Abriu-a e leu com a maior facilidade:;Emília;fallback;S;
+22;Em vista disso, mudar-nos-emos todos para sua casa — se a senhora der licença, está claro...;Aí é que é o bom.;O assanhamento da criançada subiu a 100 graus, que é o ponto de fervura da água.;Coisa;fallback;N;trecho da carta lida por Emília
+23;País da Fábula;Até o Visconde lambeu os beiços, ansioso por uma discussão científica com Mr. de La Fontaine, o famoso fabulista encontr;(1).;Visconde;fallback;X;nome entre aspas, não é fala
+24;Eu o que quero é lidar com os anões de Branca de Neve!;Quixote?;;Reinações De Narizinho;fallback;N;Narizinho. Faltou trecho anterior sem sujeito explicito, provavelmente pedrinho: — Que suco vai ser vovó! Todos aqui, imagine! Será que também vem D. Quixote?
+25;O Dunga, o Zangado... Ah, gostosura!;;Mas Dona Benta estava incerta.;Reinações De Narizinho;fallback;N;Narizinho
+26;Aumenta-se o sítio, vovó;"A população do Mundo da Fábula era grande; como acomodá-la toda ali num sítio que não tinha mais de cem alqueires de ter";propôs Pedrinho.;Pedrinho;nome_proprio;S;
+27;A senhora compra as fazendas dos vizinhos. Para que serve dinheiro? Depois que saiu o petróleo, a senhora ficou empantur;propôs Pedrinho.;"Dona Benta refletiu ainda uns instantes; depois concordou.";Pedrinho;fallback;S;
+28;É o jeito. Podemos comprar a Fazenda do Taquaral e mais a do Cupim Redondo. As duas juntas devem perfazer aí uns mil e d;"Dona Benta refletiu ainda uns instantes; depois concordou.";;Dona Benta;fallback;S;
+29;E se não couberem, a senhora vai comprando mais fazendas;;isso não oferece dificuldade.;Dona Benta;elipse_sujeito;N;Pedrinho
+30;Sim, boa idéia. Fazemos uma cerca de arame com porteira;A lembrança de Pedrinho foi aprovada.;e porteira de cadeado.;Pedrinho;fallback;N;Todo o trecho é de Dona Benta: — Sim, boa idéia. Fazemos uma cerca de arame com porteira — e porteira de cadeado. Confio a chave ao Visconde. Só abriremos a porteira quando nos convier. Se não, invadem-nos isto aqui e ..
+31;Tia Nastácia é que vai ficar tonta;Narizinho ficou cismarenta, a imaginar a maravilhosa vida que iriam ter com uma vizinhança daquelas.;lembrou Emília.;Emília;nome_proprio;S;
+32;Juro que muitos deles hão de pular a cerca por causa dos bolinhos.;lembrou Emília.;;Emília;nome_proprio;S;
+33;O remédio é fácil. Pomos Quindim de guarda, dia e noite, passeando de cá para lá ao comprimento da cerca. Como eles nunc;;hão de ter medo daquele chifre único.;Emília;elipse_sujeito;N;Dona Benta (não explícito)
+34;Sua bênção, vovó.;Ao se recolherem, até a Emília e o Visconde beijaram a mão de Dona Benta, dizendo com a maior naturalidade:;;Dona Benta;elipse_sujeito;N;Emília e Visconde

@@ -1,0 +1,36 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;Que cabecinha de vento! Escreve-me uma carta e não indica para onde devo remeter a resposta.;Viu que Polegar havia esquecido de mandar o endereço.;E cheia de indecisão estava a pensar naquilo, quando Narizinho se aproximou com um;Polegar;elipse_sujeito;N;dona benta
+2;Que é, vovó?;E cheia de indecisão estava a pensar naquilo, quando Narizinho se aproximou com um;Ao saber da falta de endereço, riu-se regaladamente.;Narizinho;elipse_sujeito;S;
+3;Ora, dá-se! Parece incrível que a senhora se aperte por tão pouca coisa. É só chamar a Emília... Emília! EMÍLIA!...;Ao saber da falta de endereço, riu-se regaladamente.;Emília surgiu rebolando.;Narizinho;fallback;S;
+4;Venha resolver um caso que está atrapalhando vovó.;Emília surgiu rebolando.;;Emília;fallback;N;narizinho
+5;Polegar escreveu, mas esqueceu de botar o endereço. Vovó não sabe para onde mandar a resposta.;;Emília deu uma risada gostosa.;Emília;fallback;N;narizinho
+6;Ah, meu Deus!  Que bicho bobo é gente grande! ...;Emília deu uma risada gostosa.;;Emília;fallback;S;
+7;Morrem de lidar com as maravilhas e não aprendem nada;;não aprendem essa coisa tão simples que é o;Coisa;descricao;N;emília
+8;faz-de-conta.;não aprendem essa coisa tão simples que é o;Me dá aqui a carta.;Coisa;descricao;N;"emília. Frase completa é “não aprendem essa coisa tão simples que é o ""faz-de-conta."" Me dá aqui a carta.”"
+9;Isso é falta de delicadeza, Emília, ler carta dos outros;Emília agarrou-a e leu-a ...;observou Narizinho.;Narizinho;nome_proprio;S;
+10;É falta de delicadeza quando a carta vai pelo correio.;observou Narizinho.;;Narizinho;nome_proprio;N;emília
+11;No sistema do;;faz-de-conta;Emília;fallback;S;"era para ser uma frase única: “No sistema do ""faz-de-conta"" não é, porque faz de conta
+que não li. Li para ver se ""vovó"" não nos traiu …”"
+12;Emília, Emília!;não nos traiu ...;gritou Narizinho com severidade.;Narizinho;nome_proprio;S;
+13;Como se atreve a fazer semelhante juízo de vovó?!;gritou Narizinho com severidade.;;Narizinho;nome_proprio;S;
+14;Minha cara;;respondeu Emília com o maior desplante;Emília;nome_proprio;S;
+15;eu já virei uma Floriana Peixota : confio desconfiando ...;respondeu Emília com o maior desplante;;Emília;nome_proprio;S;
+16;Já se viu que diabinha?;;murmurou Dona Benta filosoficamente.;Dona;nome_proprio;S;dona benta
+17;Ventos e brisas daquém e dalém Passarinhos e borboletas Esta resposta ao Polegar leva de, Depressa, depressa, se não ...;Emília chegou à janela e gritou:;E lançou a cartinha ao vento.;Emília;elipse_sujeito;S;
+18;Se não o quê, Emília?;E lançou a cartinha ao vento.;perguntou Narizinho.;Narizinho;nome_proprio;S;
+19;Se não, nada. O se não é só para meter medo.;perguntou Narizinho.;Tia Nastácia vinha entrando da cozinha para ver o que Dona Benta queria no almoço.;Narizinho;nome_proprio;S;
+20;Nossa Senhora! Isto vai virar;Ao saber da cartinha do Polegar e da licença para que viessem morar ali, exclamou, erguendo as mãos para o céu:;;Polegar;elipse_sujeito;N;"tia nastácia. Era frase única: “Nossa Senhora! Isto vai virar ""hospiço."" Sinhá não se lembra daquela vez que eles entupiram a casa de reizinhos e
+príncipes e princesas? Nossa Senhora, onde iremos parar?”"
+21;hospiço.;;Sinhá não se lembra daquela vez que eles entupiram a casa de reizinhos e príncipes e princesas?;Polegar;fallback;N;tia nastácia
+22;Fazemos uma cerca, Nastácia. Eles ficam morando para lá da cerca. Só virão aqui quando quisermos.;Nossa Senhora, onde iremos parar?;;Sinhá;fallback;N;dona benta
+23;Cercas, Sinhá? Pois se até muro com caco de vidro em cima gente pula, quanto mais eles, que são uns demoninhos...;;;Sinhá;fallback;N;tia nastácia
+24;Quindim fica de guarda à cerca, passeando de cá para lá;;e na porteira eu boto um cadeado.;Sinhá;elipse_sujeito;N;dona benta frase deveria ser: “ Quindim fica de guarda à cerca, passeando de cá para lá — e na porteira eu boto um cadeado. O Visconde tomará conta da chave.
+25;Ché, Sinhá! Tudo é muito bonito e fácil no;A negra deu uma grande risada.;;Visconde;fallback;N;tia nastácia
+26;pape.;;Mas eu quero ver!;Visconde;fallback;N;"tia nastácia frase completa é “""pape."" Mas eu
+quero ver! O Visconde chaveiro, ha, ha, ha!”"
+27;Olhe, para o almoço faça um frango assado com farofa;Dona Benta, que estava com preguiça de discutir, mudou de assunto.;e uns pastéis de palmito.;Dona Benta;fallback;S;a frase completa deveria ser: “ Olhe, para o almoço faça um frango assado com farofa — e uns pastéis de palmito.”
+28;O palmito acabou, Sinhá.;e uns pastéis de palmito.;Seu;Dona Benta;fallback;N;"tia nastácia frase completa deveria ser: “ O palmito acabou, Sinhá. ""Seu"" Pedrinho gastou ontem o
+último para fazer uma tal de bica d’água.”"
+29;Mande buscar meia dúzia no Elias Turco.;Pedrinho gastou ontem o último para fazer uma tal de bica d’água.;;Pedrinho;fallback;N;dona benta
+30;O palmito do Elias é falsificado, Sinhá. Só casca.;;;Pedrinho;fallback;N;tia nastácia
+31;Então, então ...;;;Pedrinho;fallback;N;dona benta

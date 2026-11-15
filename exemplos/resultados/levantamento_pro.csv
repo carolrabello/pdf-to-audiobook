@@ -1,0 +1,11 @@
+﻿data_hora;capitulo;modelo;modo;falas;segmentos;personagens;vozes_distintas;segmentos_novos;tempo_pln_s;tempo_total_min;duracao_audio_min;mp3;status
+2026-11-14 08:33;alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos;gemini-2.5-pro-tts;gerar;23;50;9;9;50;8.1;16.1;11.8;data\outputs\alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos\alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos-pro.mp3;ok
+2026-11-14 08:49;alice-no-pais-das-maravilhas-cap-lago-das-lagrimas;gemini-2.5-pro-tts;gerar;31;60;10;10;60;2.3;18.3;13.1;data\outputs\alice-no-pais-das-maravilhas-cap-lago-das-lagrimas\alice-no-pais-das-maravilhas-cap-lago-das-lagrimas-pro.mp3;ok
+2026-11-14 09:07;alice-no-pais-das-maravilhas-cap-uma-reuniao-original;gemini-2.5-pro-tts;gerar;43;77;11;11;77;2.3;20.8;12.7;data\outputs\alice-no-pais-das-maravilhas-cap-uma-reuniao-original\alice-no-pais-das-maravilhas-cap-uma-reuniao-original-pro.mp3;ok
+2026-11-14 09:28;O-Picapau-Amarelo-original-cap-I;gemini-2.5-pro-tts;gerar;34;48;11;11;48;2.1;17.3;17.5;data\outputs\O-Picapau-Amarelo-original-cap-I\O-Picapau-Amarelo-original-cap-I-pro.mp3;ok
+2026-11-14 09:45;O-Picapau-Amarelo-original-cap-II;gemini-2.5-pro-tts;gerar;31;44;10;9;44;2.0;9.8;4.2;data\outputs\O-Picapau-Amarelo-original-cap-II\O-Picapau-Amarelo-original-cap-II-pro.mp3;ok
+2026-11-14 09:55;O-Picapau-Amarelo-original-cap-III;gemini-2.5-pro-tts;gerar;32;48;12;12;48;2.0;12.2;6.8;data\outputs\O-Picapau-Amarelo-original-cap-III\O-Picapau-Amarelo-original-cap-III-pro.mp3;ok
+2026-11-14 10:07;o-cortico-original-cap-VIII;gemini-2.5-pro-tts;gerar;120;138;19;19;138;3.9;41.2;29.0;data\outputs\o-cortico-original-cap-VIII\o-cortico-original-cap-VIII-pro.mp3;ok
+2026-11-14 10:48;memorias-postumas-de-bras-cubas-cap-1;gemini-2.5-pro-tts;gerar;2;8;3;3;8;2.4;4.3;4.8;data\outputs\memorias-postumas-de-bras-cubas-cap-1\memorias-postumas-de-bras-cubas-cap-1-pro.mp3;ok
+2026-11-14 10:53;memorias-postumas-de-bras-cubas-cap-6;gemini-2.5-pro-tts;gerar;10;17;4;4;17;2.2;6.2;5.4;data\outputs\memorias-postumas-de-bras-cubas-cap-6\memorias-postumas-de-bras-cubas-cap-6-pro.mp3;ok
+2026-11-14 10:59;memorias-postumas-de-bras-cubas-cap-7;gemini-2.5-pro-tts;gerar;21;37;7;7;37;2.7;16.1;15.1;data\outputs\memorias-postumas-de-bras-cubas-cap-7\memorias-postumas-de-bras-cubas-cap-7-pro.mp3;ok

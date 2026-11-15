@@ -1,0 +1,21 @@
+﻿data_hora;capitulo;modelo;modo;falas;segmentos;personagens;vozes_distintas;segmentos_novos;tempo_pln_s;tempo_total_min;duracao_audio_min;mp3;status
+2026-11-12 18:24;alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos;gemini-2.5-flash-tts;simulacao;23;50;9;9;;2.3;;;;simulacao
+2026-11-12 18:24;alice-no-pais-das-maravilhas-cap-lago-das-lagrimas;gemini-2.5-flash-tts;simulacao;31;60;10;10;;2.5;;;;simulacao
+2026-11-12 18:24;alice-no-pais-das-maravilhas-cap-uma-reuniao-original;gemini-2.5-flash-tts;simulacao;43;77;11;11;;2.3;;;;simulacao
+2026-11-12 18:24;O-Picapau-Amarelo-original-cap-I;gemini-2.5-flash-tts;simulacao;34;48;11;11;;2.1;;;;simulacao
+2026-11-12 18:24;O-Picapau-Amarelo-original-cap-II;gemini-2.5-flash-tts;simulacao;31;44;10;9;;1.9;;;;simulacao
+2026-11-12 18:24;O-Picapau-Amarelo-original-cap-III;gemini-2.5-flash-tts;simulacao;32;48;12;12;;2.0;;;;simulacao
+2026-11-12 18:24;o-cortico-original-cap-VIII;gemini-2.5-flash-tts;simulacao;120;138;19;19;;4.1;;;;simulacao
+2026-11-12 18:24;memorias-postumas-de-bras-cubas-cap-1;gemini-2.5-flash-tts;simulacao;2;8;3;3;;2.2;;;;simulacao
+2026-11-12 18:25;memorias-postumas-de-bras-cubas-cap-6;gemini-2.5-flash-tts;simulacao;10;17;4;4;;2.3;;;;simulacao
+2026-11-12 18:25;memorias-postumas-de-bras-cubas-cap-7;gemini-2.5-flash-tts;simulacao;21;37;7;7;;2.8;;;;simulacao
+2026-11-12 18:33;alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos;gemini-2.5-flash-tts;gerar;23;50;9;9;50;2.2;13.1;12.4;data\outputs\alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos\alice-no-pais-das-maravilhas-cap-viagem-a-toca-dos-coelhos-flash.mp3;ok
+2026-11-12 18:46;alice-no-pais-das-maravilhas-cap-lago-das-lagrimas;gemini-2.5-flash-tts;gerar;31;60;10;10;60;2.2;15.0;13.9;data\outputs\alice-no-pais-das-maravilhas-cap-lago-das-lagrimas\alice-no-pais-das-maravilhas-cap-lago-das-lagrimas-flash.mp3;ok
+2026-11-12 19:01;alice-no-pais-das-maravilhas-cap-uma-reuniao-original;gemini-2.5-flash-tts;gerar;43;77;11;11;77;2.3;17.4;13.3;data\outputs\alice-no-pais-das-maravilhas-cap-uma-reuniao-original\alice-no-pais-das-maravilhas-cap-uma-reuniao-original-flash.mp3;ok
+2026-11-12 19:18;O-Picapau-Amarelo-original-cap-I;gemini-2.5-flash-tts;gerar;34;48;11;11;48;2.0;11.1;8.1;data\outputs\O-Picapau-Amarelo-original-cap-I\O-Picapau-Amarelo-original-cap-I-flash.mp3;ok
+2026-11-12 19:29;O-Picapau-Amarelo-original-cap-II;gemini-2.5-flash-tts;gerar;31;44;10;9;44;1.9;9.0;4.7;data\outputs\O-Picapau-Amarelo-original-cap-II\O-Picapau-Amarelo-original-cap-II-flash.mp3;ok
+2026-11-12 19:38;O-Picapau-Amarelo-original-cap-III;gemini-2.5-flash-tts;gerar;32;48;12;12;48;2.0;10.5;7.5;data\outputs\O-Picapau-Amarelo-original-cap-III\O-Picapau-Amarelo-original-cap-III-flash.mp3;ok
+2026-11-12 19:49;o-cortico-original-cap-VIII;gemini-2.5-flash-tts;gerar;120;138;19;19;138;3.9;33.5;31.2;data\outputs\o-cortico-original-cap-VIII\o-cortico-original-cap-VIII-flash.mp3;ok
+2026-11-12 20:22;memorias-postumas-de-bras-cubas-cap-1;gemini-2.5-flash-tts;gerar;2;8;3;3;8;2.1;2.9;4.7;data\outputs\memorias-postumas-de-bras-cubas-cap-1\memorias-postumas-de-bras-cubas-cap-1-flash.mp3;ok
+2026-11-12 20:25;memorias-postumas-de-bras-cubas-cap-6;gemini-2.5-flash-tts;gerar;10;17;4;4;17;2.2;4.9;5.6;data\outputs\memorias-postumas-de-bras-cubas-cap-6\memorias-postumas-de-bras-cubas-cap-6-flash.mp3;ok
+2026-11-12 20:30;memorias-postumas-de-bras-cubas-cap-7;gemini-2.5-flash-tts;gerar;21;37;7;7;37;2.7;11.7;15.3;data\outputs\memorias-postumas-de-bras-cubas-cap-7\memorias-postumas-de-bras-cubas-cap-7-flash.mp3;ok

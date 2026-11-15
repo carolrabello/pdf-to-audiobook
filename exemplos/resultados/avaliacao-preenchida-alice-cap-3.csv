@@ -1,0 +1,61 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;Atenção!;Todos o rodearam, e Alice ficou bem perto, porque com medo de adoecer, queria enxugar-se mais depressa que os outros.;disse o Rato com ar importante.;Rato;nome_proprio;S;"não foi considerada a fala anterior de papagaio: “Eu sou o mais velho e por isso tenho direito de ser ouvido primeiro”.
+Cortou a frase completa do rato: “Sentem-se todos e ouçam-me. Sei um meio muito bom de enxugar penas, pelo e roupa num instantinho. “
+Faltou a continuação da frase do rato que foi encontrada: “Estão todos pron-
+tos? Muito bem. Vou começar. Como os meus amigos sabem, a coi-
+sa mais árida e seca que há no mundo é o começo da história da
+Inglaterra. É um poderoso secante. Vou recitar esse começo e ga-
+ranto que a seca fará que todos sequem. Silêncio! Vou começar.”"
+2;Chi!;Edwin e Morcar, condes de Mercia e da Nortúmbria...;murmurou o Papagaio com um arrepio.;Papagaio;nome_proprio;S;"Antes, existe uma fala do Rato: “Guilherme I,
+o Conquistador, cuja causa era favorecida pelo Papa, foi logo aceito
+pelos ingleses os quais careciam de chefes e estavam acostumados
+a usurpações e conquistas. Edwin e Morcar, condes de Mercia e da
+Nortúmbria…”
+"
+3;Que é que o senhor disse?;murmurou o Papagaio com um arrepio.;observou o Rato, carrancudo mas com delicadeza.;Rato;nome_proprio;S;
+4;Nada,;observou o Rato, carrancudo mas com delicadeza.;respondeu o Papagaio.;Rato;elipse_sujeito;N;papagaio
+5;Pensei que tinha feito alguma objeção, tornou o Rato desfazendo a carranquinha. E continuou a seca:;Eu chiei apenas.;"Como ia dizendo, os Condes de Mercia e da Nortúmbria se declararam por ele; e o próprio Stigand, o patriótico arcebispo ";Rato;elipse_sujeito;S;"rato. etiqueta dentro da fala; a continuação 'Como ia dizendo...' ficou na narração"
+6;Acompanhou-os, quem?;"Como ia dizendo, os Condes de Mercia e da Nortúmbria se declararam por ele; e o próprio Stigand, o patriótico arcebispo ";interrompeu o Pato, que era muito curto de inteligência.;Pato;nome_proprio;S;
+7;Acompanhou-os. Não sabe o que os significa nesta frase? Os é um pronome que corresponde a eles. Acompanhou eles,;interrompeu o Pato, que era muito curto de inteligência.;respondeu o Rato já meio zangado.;Rato;nome_proprio;S;rato. etiqueta 'respondeu o Rato' dentro da fala
+8;Sei que os significa eles,;respondeu o Rato já meio zangado.;retrucou o Pato.;Pato;nome_proprio;S;
+9;Qual melhor o quê! Estou encharcada como antes,;Melhor?;respondeu Alice torcendo a sainha.;Alice;nome_proprio;S;
+10;Nesse caso,;Parece que sua história não seca roupa, só seca a paciência dos ouvintes.;interveio o Ganso em tom solene, requeiro que se levante a sessão para que sejam adotadas enérgicas providências.;Ganso;nome_proprio;S;
+11;Fale língua de gente!;interveio o Ganso em tom solene, requeiro que se levante a sessão para que sejam adotadas enérgicas providências.;gritou a Pequenina Águia.;Pequenina;nome_proprio;S;"pequenina águia (rótulo cortado). Cortou o resto da fala: “Sou muito jo-
+vem; ainda não aprendi as palavras difíceis. E acho até que nem o
+Senhor Ganso entendeu muito bem o que disse,”"
+12;O que eu queria dizer,;E acho até que nem o Senhor Ganso entendeu muito bem o que disse, e a Pequenina Aguiazinha meteu a cabeça debaixo da asa;prosseguiu o Ganso um tanto ofendido, era que a melhor coisa para secar é uma corrida sui generis.;Ganso;nome_proprio;S;
+13;Que coisa é uma corrida sui generis?;prosseguiu o Ganso um tanto ofendido, era que a melhor coisa para secar é uma corrida sui generis.;indagou Alice, não tanto porque o desejasse saber, mas porque o Ganso havia feito uma pausa, como se pensasse que alguém;Alice;nome_proprio;S;
+14;O melhor meio de explicar é fazer. Vamos organizar a corrida sui generis.;indagou Alice, não tanto porque o desejasse saber, mas porque o Ganso havia feito uma pausa, como se pensasse que alguém;E começou.;Ganso;elipse_sujeito;S;
+15;o feitio exato não importa;Primeiro traçou no chio um círculo muito torto;foi logo dizendo, e colocou cada um dos presentes ao longo do risco, aqui, ali, lá.;Ganso;elipse_sujeito;S;
+16;Mas quem vai distribuir prêmios?;Por fim deu a decisão:, Todos ganharam e todos vão receber prêmios.;;Ganso;fallback;N;fala coletiva dos bichos
+17;Está claro que é ela,;;disse o Ganso apontando para a menina.;Ganso;elipse_sujeito;S;
+18;Mas também ela tem direito a prêmio,;Foi a conta.;disse o Rato.;Rato;nome_proprio;S;
+19;Pois de certo, concordou o Ganso com toda a seriedade. E virando-se para Alice perguntou:;disse o Rato.;Que mais coisas tem vecê no bolso?;Alice;elipse_sujeito;N;"ganso. etiqueta dentro da fala. “ Que mais coisas tem vecê no
+Bolso?” é fala do ganso"
+20;Só este dedal,;Que mais coisas tem vecê no bolso?;disse Alice, tirando do seu bolso um dedal de tostão, que deu ao Ganso.;Alice;nome_proprio;S;
+21;E agora? Agora o que tinham a fazer era comer os prêmios;Por isso não destampou nenhuma risada, limitando-se a agradecer com uma cortesia de cabeça.;e foi isso uma pequena tragédia.;Menina;fallback;X;é narração, não é fala. faltou fala anterior do ganso: “Pedimos que aceite este precioso dedal como prova de nossa mais profunda admiração.” 
+22;A minha história é muito triste e comprida,;Você me prometeu contar sua história, e explicar por que motivo tem ódio às letras G, e C, disse a menina em voz meio ba;suspirou o Rato.;Rato;nome_proprio;S;
+23;Pare aí.Temos já de ir ao juiz.Quero te acusar.;Romão disse a um ratinho que ia passando por perto dele:;Vamos;Romão;nome_proprio;S;romão = o gato da história imaginada por Alice
+24;A consciência de nada me acusa e saberei defender-me.;,respondeu o ratinho.;;Romão;elipse_sujeito;N;Ratinho. Faltou a fala “Vamos” do ratinho (história imaginada)
+25;Muito bem;;, disse o gato.;Romão;elipse_sujeito;S;gato = romão
+26;Aqui estamos diante do senhor juiz.;, disse o gato.;;Romão;elipse_sujeito;S;gato = romão
+27;Não o vejo;;, disse o ratinho.;Romão;elipse_sujeito;N;ratinho
+28;O juiz sou eu;, disse o ratinho.;,disse o gato.;Romão;elipse_sujeito;S;gato = romão
+29;Ojúritambém soueu;Eojúri?”,perguntouoratinho.;,disseo gato.;Romão;fallback;S;gato = romão. texto sem espaços no PDF. Faltou a fala “Eojúri?” do ratinho.
+30;Eopromotor?;,disseo gato.;perguntouoratinho.;Disseo Gato;fallback;N;ratinho. rótulo 'Disseo Gato' veio de texto sem espaços no PDF
+31;O promotor também sou eu.;perguntouoratinho.;;Disseo Gato;fallback;N;gato (romão). rótulo diferente de romão
+32;Então você é tudo?;;disse o ratinho.;Disseo Gato;elipse_sujeito;N;ratinho
+33;Sim porque sou o gato. Vou acusar você, julgar você e comer você.;disse o ratinho.;Alice estava assim absorvida na sua história imaginada quando o Rato a chamou a si.;Rato;nome_proprio;N;gato (romão)
+34;Você não está prestando atenção!;Alice estava assim absorvida na sua história imaginada quando o Rato a chamou a si.;gritou ele com severidade.;Rato;elipse_sujeito;S;faltou fala “Em que pensa?”
+35;Desculpe-me!;Em que pensa?;disse Alice com humildade.;Alice;nome_proprio;S;faltou fala “ Julguei que já estivesse acabada a história.”
+36;Ainda não a comecei,;Julguei que já estivesse acabada a história.;disse o Rato zangadíssimo.;Rato;nome_proprio;S;
+37;Olhe este nó!;disse o Rato zangadíssimo.;exclamou Alice mostrando um nòzinho na sua saia, querendo à custa do nó mudar de assunto.;Alice;nome_proprio;S;faltou fala “Ajude-me a desatá-lo.”
+38;Não tive intenção de insulta-lo, Senhor Rato,;Levantou-se para ir-se embora e disse:, Você está mas é a insultar-me essa bobagem de nó na saia.;murmurou a pobre Alice.;Alice;nome_proprio;S;
+39;Que pena que não ficasse! disse o Papagaio assim que o Rato desapareceu. E suspirou. Uma velha carangueja aproveitou a o;O Rato, porém, limitou-se a sacudir a cabeça com energia e apressou ainda mais o passo.;Aprenda, menina.;Alice;fallback;N;"Papagaio. Faltou trecho anterior da fala do rato: “Não seja mau. Volte e conte-nos a sua história.”
+“disse o Papagaio assim que o Rato
+desapareceu. E suspirou. Uma velha carangueja aproveitou a opor-
+tunidade para dar uma lição à filhinha que estava com ela:” é narração"
+40;Deixe-se de bobagens. A senhora com os seus sermões é capaz de fazer até uma ostra perder a paciência.;Mas a pequena carangueja, que era muito mal-criada, respondeu à mamã:;;Gente;elipse_sujeito;N;pequena carangueja (rótulo genérico)
+41;Que pena a Diná não estar aqui! murmuro Alice consigo. Ela teria feito o Rato voltar e lhe daria uma lição para o resto ;;;Gente;fallback;N;alice. “ murmuro Alice consigo. “ é narração
+42;Quem é essa Diná, se me permite a pergunta?;;indagou o Papagaio.;Gente;elipse_sujeito;N;papagaio
+43;Antes não tivesse falado em Diná!;E dando cada qual sua desculpa, todos se retiraram, deixando Alice sozinha.;pensou ela melancolicamente.;Alice;elipse_sujeito;S;

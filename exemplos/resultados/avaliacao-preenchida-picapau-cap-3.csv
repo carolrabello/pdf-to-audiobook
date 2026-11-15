@@ -1,0 +1,33 @@
+﻿n;fala;narracao_antes;narracao_depois;personagem_sistema;regra;acertou;observacao
+1;vão na onda.;Dona Benta, porém, não era das que;Não aumentou a oferta.;Dona Benta;fallback;X;palavra entre aspas, não é fala
+2;"Esses homens querem aproveitar-se da situação; fingem não querer vender as fazendas";Depois que os homens se retiraram, chamou os meninos.;tudo para me explorar.;Menino;elipse_sujeito;N;dona benta. faltou o final da fala: “Que acha que devo fazer, Pedrinho?”
+3;Absurdo, meu filho. Os processos violentos nunca dão bons resultados. Temos que estudar um meio jeitoso.;Agarrá-los e obrigá-los a assinar as escrituras, com um revólver encostado na nuca de cada um.;;Pedrinho;fallback;N;dona benta
+4;Isto de jeito é cá comigo;;gritou a Marquesa de Rabicó.;Marquesa;nome_proprio;S;marquesa de rabicó = emília
+5;Entregue-me o caso que num instante estará resolvido.;gritou a Marquesa de Rabicó.;;Marquesa;nome_proprio;S;marquesa de rabicó = emília
+6;Pois vamos ver;;disse Dona Benta.;Dona;nome_proprio;S;dona = dona benta (nome cortado)
+7;Fale com os homens e dê lá os jeitinhos necessários. Não ofereço mais de 400 mil cruzeiros pelas duas fazendas — e é mui;disse Dona Benta.;Emília chamou de parte o Visconde para a discussão do assunto.;Emília;nome_proprio;N;dona benta
+8;Desta vez a velha nos paga;Encontraram-nos na venda do Elias, bebendo cerveja entre grandes risadas. —;;Elias;fallback;N;fazendeiros (fala coletiva)
+9;diziam eles.;;;Elias;fallback;X;só a etiqueta 'diziam eles'
+10;Havemos de lhe arrancar couro e cabelo.;;Emília e o Visconde entraram, sentaram-se atrás deles numa mesinha dos fundos, e pediram meia garrafa de cerveja e duas ;Elias;fallback;N;fazendeiros (fala coletiva)
+11;Pois é;Aquilo imediatamente intrigou os fazendeiros.;"dizia a Marquesa para o Visconde, muito baixinho mas de modo que os homens ouvissem;";Marquesa;nome_proprio;S;marquesa = emília
+12;a bicharia já está embarcada: duzentos, cem machos e cem fêmeas — e rinocerontes dos mais ferozes, caçados de fresco no ;"dizia a Marquesa para o Visconde, muito baixinho mas de modo que os homens ouvissem;";;Marquesa;nome_proprio;S;marquesa = emília
+13;Mas então é verdade?;;perguntou o Visconde com o maior fingimento.;Visconde;nome_proprio;S;
+14;Pensei que fosse brincadeira...;perguntou o Visconde com o maior fingimento.;;Visconde;nome_proprio;S;
+15;Brincadeira, nada! Dona Benta não brinca. Vai fazer aqui a maior criação de feras do mundo. Chegam agora esses 200 rinoc;;300 leões!;Visconde;fallback;N;emília. faltou o trecho “300 leões! E há as panteras negras —” no meio da fala
+16;100. Isso sem falar nos ursos brancos do Pólo, nem nos lobos da Rússia, nem naquelas cobras da Índia que têm capelo vene;E há as panteras negras;Os fazendeiros, de boca aberta, entreolhavam-se assustados.;Gente;elipse_sujeito;N;emília (continuação da fala anterior). faltou o trecho “300 leões! E há as panteras negras —” no começo
+17;A criação de feras de Dona Benta será a maior do mundo, mas os vizinhos vão sofrer com isso. Toda gente sabe que os anim;Emília continuou:;fogem com quantas pernas têm.;Emília;elipse_sujeito;S;a mesma emília aparece como 'marquesa' nas falas 4, 5, 11 e 12, com outra voz
+18;Mas esses vizinhos podem processar Dona Benta;O vento leva para lá o cheiro dos leões e dos tigres e a animalada mansa dispara...;lembrou o Visconde.;Visconde;nome_proprio;S;
+19;Ela já mandou estudar esse ponto por um bom advogado do Rio. As leis não tratam do assunto. Se eles processarem Dona Ben;lembrou o Visconde.;A conversa prosseguiu nesse tom cochichado até o fim da cervejinha.;Visconde;fallback;N;emília
+20;E esta, compadre! Se o raio da velha vai mesmo fazer isso, nossas fazendas, que já pouco valem, ficarão valendo ainda me;Os dois homens ficaram com caras de asno, a olhar um para o outro.;;Visconde;fallback;N;fazendeiro
+21;Pensando bem;;disse o segundo;Visconde;elipse_sujeito;N;fazendeiro
+22;o verdadeiro é aceitarmos a proposta da velha. Quatrocentos mil cruzeiros pelas duas fazendas é até muito dinheiro — por;disse o segundo;Nesse mesmo dia voltaram os dois ao Picapau Amarelo.;Visconde;elipse_sujeito;N;fazendeiro
+23;O preço que a senhora nos oferece;Nesse mesmo dia voltaram os dois ao Picapau Amarelo.;disse um deles;Picapau Amarelo;elipse_sujeito;N;fazendeiro. 'Picapau Amarelo' é nome de lugar
+24;é fraquinho, mas nós cansados já desta vida de fazenda, resolvemos ceder. Pode marcar o dia para as escrituras.;disse um deles;;Picapau Amarelo;elipse_sujeito;N;fazendeiro
+25;Amanhã;;foi a resposta de Dona Benta, muito admirada da reviravolta operada neles.;Picapau Amarelo;elipse_sujeito;N;dona benta
+26;Coisas da vida, minha senhora. Fomos à venda do Turco beber uma cervejinha e pensamos melhor sobre o caso. Estamos velho;Os fazendeiros coçaram a cabeça.;Nesse instante Dona Benta ouviu o ringido da porteira.;Dona Benta;fallback;N;fazendeiros
+27;Hum! Estou compreendendo!;Vinham chegando a Emília e o Visconde, montados no Burro Falante. —;;Burro Falante;fallback;N;dona benta
+28;murmurou ela consigo.;;;Burro Falante;fallback;X;só a etiqueta 'murmurou ela consigo'
+29;Aqui anda o dedinho da Emília.;;Depois que os fazendeiros se retiraram, Dona Benta a chamou.;Dona;nome_proprio;S;dona = dona benta (nome cortado)
+30;Que foi que você fez, diabinha, para mudar desse modo a opinião dos dois homens?;Depois que os fazendeiros se retiraram, Dona Benta a chamou.;;Dona;nome_proprio;S;dona = dona benta (nome cortado)
+31;Nada, Dona Benta. Apenas comemos uns doces na bodega do Elias e tomamos uma cervejinha. Por sinal que estou tonta, tonta;;E estava mesmo.;Dona Benta;fallback;N;emília
+32;Que será que Emília botou na cabeça deles?;Dona Benta ficou a cismar: —;Mas por mais que cismasse, nada adivinhou.;Dona Benta;fallback;S;pensamento de dona benta
