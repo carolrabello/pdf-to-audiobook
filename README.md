@@ -8,7 +8,7 @@ O sistema recebe um capítulo em PDF, identifica quem fala em cada trecho com PL
 
 - Python 3.11
 - FFmpeg instalado no sistema (usado pelo pydub para montar o MP3)
-- Projeto no Google Cloud com a Vertex AI ativada
+- Projeto no Google Cloud com a GCP ativada
 
 ```
 pip install -r requirements.txt
